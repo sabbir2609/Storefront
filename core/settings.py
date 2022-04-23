@@ -87,12 +87,38 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# heroku dbms
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd4cui7v5ti2h7t',
+#         'USER': 'kzkcgoiauzquvv',
+#         'PASSWORD': 'a390c9c36510ba271427926960abe50412aec16524fb7307dac5ad525fe89ae7',
+#         'HOST': 'ec2-34-195-233-155.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+
+# local postgresql
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'storefront',
+        'USER': 'postgres',
+        'PASSWORD': '2609',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation

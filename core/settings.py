@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@uaw5!_=pii*$qaws!zt)@^c9i_(*5miktx-ibrm(mbsv0o()j'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -92,10 +94,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'd4cui7v5ti2h7t',
-#         'USER': 'kzkcgoiauzquvv',
-#         'PASSWORD': 'a390c9c36510ba271427926960abe50412aec16524fb7307dac5ad525fe89ae7',
-#         'HOST': 'ec2-34-195-233-155.compute-1.amazonaws.com',
+#         'NAME': config('HEROKU_DB_NAME'),
+#         'USER': config('HEROKU_DB_USER'),
+#         'PASSWORD': config('HEROKU_DB_PASSWORD'),
+#         'HOST': config('HEROKU_DB_HOST'),
 #         'PORT': '5432',
 #     }
 # }
@@ -107,7 +109,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'storefront',
         'USER': 'postgres',
-        'PASSWORD': '2609',
+        'PASSWORD': config('LOCAL_DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
     }

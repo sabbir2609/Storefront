@@ -10,6 +10,12 @@
 
 <body>
     <h1>Hello {{ name }}</h1>
+    <br>
+    <ul>
+        {% for product in products %}
+        <li>{{ product.title }} - {{ product.unit_price }} </li>
+        {% endfor %}
+    </ul>
 </body>
 
 </html>

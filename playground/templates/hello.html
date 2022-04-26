@@ -13,7 +13,7 @@
     <br>
     <ul>
         {% for product in products %}
-        <li>{{ product.title }} - {{ product.unit_price }} </li>
+        <li>{{ product.customer.first_name }} - {{product.id}} </li>
         {% endfor %}
     </ul>
 </body>

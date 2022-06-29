@@ -16,5 +16,6 @@ dajngo-admin startproject core .
 
 install django-debug-toolbar
 __________ 
-pip install django-debug-toolbar `Link https://django-debug-toolbar.readthedocs.io/en/latest/`
+pip install django-debug-toolbar 
+More :: `https://django-debug-toolbar.readthedocs.io/en/latest/`
 

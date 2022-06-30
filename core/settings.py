@@ -35,6 +35,9 @@ INSTALLED_APPS = [
 
     # new apps
     'playground',
+
+    'store',
+    'tags',
 ]
 
 MIDDLEWARE = [

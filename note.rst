@@ -19,3 +19,19 @@ __________
 | pip install django-debug-toolbar 
 | More :: `https://django-debug-toolbar.readthedocs.io/en/latest/`
 
+Install psycopg2 to connect Postgres
+__________
+pip install psycopg2
+
+Databse config for Postgres
+__________
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'storefront',
+        'USER': 'postgres',
+        'PASSWORD': '2609',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}

@@ -46,3 +46,10 @@ class Order(models.Model):
     placed_at = models.DateTimeField(auto_now_add=True)
     payment_status = models.CharField(max_length=1 ,choices=PAYMENT_STATUS_CHOICES, default=PAYMENT_STATUS_PENDING)
     
+
+
+class Address(models.Model):
+    street = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    # make One-To_One Relationship with customer
+    customer = models.OneToOneField(Customer, on_delete=models.CASCADE, primary_key=True)

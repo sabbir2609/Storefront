@@ -22,11 +22,26 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(models.Customer)
 class CustomerAdmin(admin.ModelAdmin):
     # more: https://docs.djangoproject.com/en/4.0/ref/contrib/admin/#modeladmin-options
-    list_display = ['first_name', 'last_name', 'membership']
+    list_display = ['first_name', 'last_name', 'membership', 'orders']
     list_editable = ['membership']
     ordering = ['first_name', 'last_name']
     list_per_page = 10
 
+    # didn't get this section will review
+    @admin.display(ordering='orders_count')
+    def orders(self, customer):
+        url = (
+            reverse('admin:store_order_changelist')
+            + '?'
+            + urlencode({
+                'customer__id': str(customer.id)
+            }))
+        return format_html('<a href="{}">{} Orders</a>', url, customer.orders_count)
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).annotate(
+            orders_count = Count('order')
+        )
 
 @admin.register(models.Order)
 class OrderAdmin(admin.ModelAdmin):
@@ -37,6 +52,8 @@ class OrderAdmin(admin.ModelAdmin):
 @admin.register(models.Collection)
 class CollectionAdmin(admin.ModelAdmin):
     list_display = ['title', 'products_count']
+
+    # didn't get this section will review
     @admin.display(ordering='products_count')
     def products_count(self, collection):
         url = (

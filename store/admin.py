@@ -12,12 +12,14 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['title', 'unit_price','inventory_status', 'collection']
     list_editable = ['unit_price']
     list_per_page = 10
+
+    list_filter = ['collection', 'last_update']
     
     @admin.display(ordering='inventory')
     def inventory_status(self, product):
         if product.inventory < 10:
-            return 'Low'
-        return 'OK'
+            return f'Low - {product.inventory}'
+        return f'OK - {product.inventory} '
 
 @admin.register(models.Customer)
 class CustomerAdmin(admin.ModelAdmin):
@@ -26,7 +28,7 @@ class CustomerAdmin(admin.ModelAdmin):
     list_editable = ['membership']
     list_per_page = 10
     ordering = ['first_name', 'last_name'] 
-    search_fields = ['first_name__startswith', 'last_name__startswith'] # lookup-type
+    search_fields = ['first_name__istartswith', 'last_name__istartswith'] # lookup-type case insensitive
 
     # didn't get this section will review
     @admin.display(ordering='orders_count')

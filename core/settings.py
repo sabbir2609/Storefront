@@ -22,12 +22,17 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
+    
+    # for admin theme
+    'colorfield',
+    'admin_interface',
+
+    # pre-installed
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     'django.contrib.sessions',
 
     # add debug toolbar
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'tags',
 
     'likes',
+
 ]
 
 MIDDLEWARE = [
@@ -121,6 +127,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = 'static/'
+STATIC_ROOT = 'static/'
 
 # Default primary key field type
 

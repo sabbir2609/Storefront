@@ -24,8 +24,9 @@ class CustomerAdmin(admin.ModelAdmin):
     # more: https://docs.djangoproject.com/en/4.0/ref/contrib/admin/#modeladmin-options
     list_display = ['first_name', 'last_name', 'membership', 'orders']
     list_editable = ['membership']
-    ordering = ['first_name', 'last_name']
     list_per_page = 10
+    ordering = ['first_name', 'last_name'] 
+    search_fields = ['first_name__startswith', 'last_name__startswith'] # lookup-type
 
     # didn't get this section will review
     @admin.display(ordering='orders_count')

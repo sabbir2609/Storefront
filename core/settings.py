@@ -46,6 +46,8 @@ INSTALLED_APPS = [
 
     'likes',
 
+    'store_custom',
+
 ]
 
 MIDDLEWARE = [

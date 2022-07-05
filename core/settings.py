@@ -29,23 +29,23 @@ INSTALLED_APPS = [
 
     # pre-installed
     'django.contrib.admin',
+    'django.contrib.sessions',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sessions',
+    
+    # django REST Framework
+    'rest_framework',
 
     # add debug toolbar
     "debug_toolbar",
 
     # new apps
     'playground',
-
     'store',
     'tags',
-
     'likes',
-
     'store_custom',
 
 ]
@@ -135,3 +135,9 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# disable decimal -> string for rest framework
+
+REST_FRAMEWORK = {
+    'CORECE_DECIMAL_TO_STRING' :False
+}

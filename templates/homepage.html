@@ -1,214 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base/base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <style>
-        @media(max-width: 500px) {
-            .reverse-columns {
-                flex-direction: column-reverse;
-                display: flex;
-            }
-        }
+{% block title %}Homepage{% endblock %}
 
-        .titled {
-            font-family: 'Merriweather', serif !important;
-            font-size: 58px !important;
-            font-weight: 400 !important;
-            line-height: 64px !important;
-        }
-
-        .subtitled {
-            font-family: 'Merriweather', serif !important;
-            font-size: 22px !important;
-            font-weight: 400 !important;
-            line-height: 36px !important;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- NavBar va a todo lo ancho -->
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-                <img src="https://lh3.googleusercontent.com/h4dS2FlPOCLO4m547y3jLnLGDMaNucpGpN5P_YM-gKMWp-8jiCoARNarar5IgPZxa-RP6JonnAPhXC4GpFwl5mb_k4fSh8-G_gnlhVonKrjnkMW1TfTNK16A0OFY1MxKelm7iAiwwpebpF82vgVPVxCWgxhchvnl_prweC74fz_6C6W_7QI-nwtSo67StMJMFO1-t7hOnrKJrHdNg9Qs6PG9EMn7rUjpATWjB2Wx8dhj5T8vmKok9mS9wjVZjOrbUDUa2qwhE89THZNHfjdUo2vQBf71yialEWB8l60N_kR0g0YuDzU1xfEWuZLZ6NXPdE-uBaKAbdA8YbDS8uxAzsXICnmJxsi0utqbPM1w2j5W1UtaNxWVOzoWWt-JEhmLan1CDefk-6kDH_BqLZI6hrWVsMJakv7nUOycjnIWBDPjfDvqNXlALc4-a0jsioQ5WBSZk8reJIie9Uy-lxcwX-f3aC3X1nKfPfmNTqfa-MSJKKLboMJ9eM_-0UORmtvD4xgyQv9INZZpZV6tdotRdDcOLQN5m3-lBUBirsUNQWz4vMNyKFnsCbekjjaFZpa_5v-AlvBbcHHnCNMj__qD1Kw8G6tbcc_dopxr_r_6rvLgoEVBhylM3Gsy3WzIsKVl4qOVYAxHMrpqfMlrgu6J_ae90MgsBnkPUYv4OC7iXHaJ17PK6W9gbbJLnXsbKkueqYJ2TCQ9Og2PDCO8702lUDQFZzKqyS32eVg4Cgzz5TDAJCQ-jPHd5E9Ig9zj=w330-h99-no?authuser=0"
-                    alt="SABBIR INC." width="112" height="28">
-            </a>
-        </div>
-
-        <div class="navbar-menu">
-
-            <div class="navbar-end">
-                <a href="/admin" class="navbar-item">
-                    Admin
-                </a>
-
-                <a class="navbar-item">
-                    BUY
-                </a>
-
-                <a class="navbar-item">
-                    ILLUSTRATION SERIES
-                </a>
-
-                <a class="navbar-item">
-                    EXCLUSIVE ILLUSTRATIONS
-                </a>
-
+{% block content %}
+<div class="container my-5">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+            <h1 class="display-4 fw-bold lh-1">Border hero with cropped image and shadows</h1>
+            <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most
+                popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system,
+                extensive prebuilt components, and powerful JavaScript plugins.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Primary</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
             </div>
         </div>
-    </nav>
+        <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+            <img class="rounded-lg-3"
+                src="https://images.unsplash.com/photo-1655940646105-3f1afd0ecf72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                alt="" width="720">
+        </div>
+    </div>
+</div>
 
-    <!-- Hero del producto -->
-    <section class="hero is-white is-fullheight">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns  is-vcentered reverse-columns">
-                    <div class="column
-          is-10-mobile 
-          is-10-tablet 
-          is-5-desktop 
-          is-5-widescreen 
-          is-5-fullhd " data-aos="fade-down">
-                        <h1 class="title titled is-1 mb-6">
-                            Evolving business with technology
-                        </h1>
-                        <div class="buttons">
-                            <button class="button is-yellow">Esablished technical teams</button>
-                            <button class="button">Less-technical teams</button>
-                            <button class="button"><a href="/admin">Admin</a></button>
-                        </div>
-                    </div>
-                    <div data-aos="fade-right" class="column
-          is-10-mobile 
-          is-10-tablet 
-          is-4-desktop 
-          is-7-widescreen 
-          is-4-fullhd is-offset-1-fullhd">
-                        <figure class="image is-square">
-                            <img src="https://i.pinimg.com/564x/93/3b/f3/933bf390edf04ed1ba8610ab152d0345.jpg">
-                        </figure>
-                    </div>
+<div class="b-example-divider"></div>
 
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3">Vertically centered hero sign-up form</h1>
+            <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each
+                required form group has a validation state that can be triggered by attempting to submit the form
+                without completing it.</p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+            <form class="p-4 p-md-5 border rounded-3 bg-light">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="hero is-white is-fullheight">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns  is-vcentered">
-                    <div data-aos="fade-left" class="column
-          is-10-mobile is-offset-1-mobile
-          is-10-tablet is-offset-1-tablet
-          is-4-desktop is-offset-1-desktop
-          is-4-widescreen is-offset-1-widescreen
-          is-4-fullhd is-offset-1-fullhd">
-                        <figure class="image is-square">
-                            <img src="https://i.pinimg.com/564x/c3/a0/8b/c3a08b942d2c8f47443f4f82dd44c2be.jpg">
-                        </figure>
-                    </div>
-                    <div data-aos="fade-down" class="column
-          is-10-mobile is-offset-1-mobile
-          is-10-tablet is-offset-1-tablet
-          is-5-desktop is-offset-1-desktop
-          is-5-widescreen is-offset-1-widescreen
-          is-5-fullhd is-offset-1-fullhd">
-                        <h1 class="titled title is-1 mb-6">
-                            absurd illustrations that make sense
-                        </h1>
-                        <h2 class="subtitled subtitle">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cupiditate dolorum vitae
-                            dolores
-                            nesciunt totam magni quas.
-                        </h2>
-                    </div>
-
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="hero is-white is-fullheight">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns  is-vcentered reverse-columns">
-                    <div data-aos="fade-right" class="column
-          is-10-mobile is-offset-1-mobile
-          is-10-tablet is-offset-1-tablet
-          is-5-desktop is-offset-1-desktop
-          is-5-widescreen is-offset-1-widescreen
-          is-5-fullhd is-offset-1-fullhd">
-                        <h1 class="title titled is-1 mb-6">
-                            absurd illustrations that make sense
-                        </h1>
-                        <h2 class="subtitle subtitled">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cupiditate dolorum vitae
-                            dolores
-                            nesciunt totam magni quas.
-                        </h2>
-                    </div>
-                    <div data-aos="fade-down" class="column
-          is-10-mobile is-offset-1-mobile
-          is-10-tablet is-offset-1-tablet
-          is-4-desktop is-offset-1-desktop
-          is-4-widescreen is-offset-1-widescreen
-          is-4-fullhd is-offset-1-fullhd" data-aos="fade-up">
-                        <figure class="image is-square">
-                            <img src="https://i.pinimg.com/564x/9e/7d/a5/9e7da5d99a0088e191ff03735e7d0c25.jpg">
-                        </figure>
-                    </div>
-
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
                 </div>
-            </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+                <hr class="my-4">
+                <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+            </form>
         </div>
-    </section>
-
-    <section class="hero is-medium has-text-centered">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns is-centered">
-                    <div data-aos="zoom-in-up" class="column is-8">
-                        <h1 class="title titled is-1 mb-6">
-                            Primary bold title <span id="typewriter"></span>
-                        </h1>
-                        <h2 class="subtitle subtitled">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cupiditate dolorum vitae
-                            dolores
-                            nesciunt totam magni quas.
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        </h2>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.13.1/core.min.js"></script>
-    <script>
-        new Typewriter('#typewriter', {
-            strings: ['typewriter', 'Effect', 'typewriter.js', 'example'],
-            autoStart: true,
-            loop: true,
-        });
-    </script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            once: true
-        });
-    </script>
-</body>
-
-</html>
+    </div>
+</div>
+{% endblock %}

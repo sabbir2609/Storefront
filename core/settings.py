@@ -139,5 +139,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # disable decimal -> string for rest framework
 
 REST_FRAMEWORK = {
-    'CORECE_DECIMAL_TO_STRING' :False
+    'COERCE_DECIMAL_TO_STRING' :False
 }

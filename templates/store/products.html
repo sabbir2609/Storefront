@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+All Products
+{% endblock %}
+
+
+{% block content %}
+
+<ul class="list-group">
+    {% for product in page_obj %}
+    <li class="list-group-item">{{product.title}} [Price - {{product.unit_price}}]</li>
+    {% endfor %}
+</ul>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+        </li>
+        {% endif %}
+        {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+        <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</a>
+        </li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link">Next</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+
+{% endblock %}

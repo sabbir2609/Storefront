@@ -8,12 +8,6 @@
         {% block title %}My amazing site{% endblock %}
     </title>
 
-    <style>
-        main>.container {
-            padding: 60px 15px 0;
-        }
-    </style>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
@@ -22,8 +16,11 @@
     <header>
         {% include "base/nav-bar.html" %}
     </header>
+    <div class="class">
+        {% block content %}
+        {% endblock %}
+    </div>
 
-    {% block content %}{% endblock %}
 
     {% include "base/footer.html" %}
 

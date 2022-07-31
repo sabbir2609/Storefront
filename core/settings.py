@@ -71,11 +71,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # debug-toolbar middleware
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    # ...
+    # WhiteNoiseMiddleware
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    # ...
-
 ]
 
 ROOT_URLCONF = 'core.urls'

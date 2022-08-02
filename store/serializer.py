@@ -11,7 +11,7 @@ class CollectionSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ['id','title','slug','description','inventory','unit_price','price_with_tax','collection']
+        fields = ('id','title','slug','description','inventory','unit_price','price_with_tax','collection')
         # fields = '__all__' # bad practice
 
     
@@ -31,3 +31,16 @@ class ProductSerializer(serializers.ModelSerializer):
     #         return serializers.ValidationError('Password Do Not Match')
     #     else:
     #         return data
+
+    # def create(self, validated_data):
+    #     product = Product(**validated_data)
+    #     product.other = 1
+    #     product.save()
+    #     return product
+
+        # updating data
+
+    # def update(self, instance, validated_data):
+    #     instance.unit_price = validated_data.get('unit_price')
+    #     instance.save()
+    #     return instance

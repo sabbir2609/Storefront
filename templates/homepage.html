@@ -3,14 +3,32 @@
 {% block title %}Homepage{% endblock %}
 
 {% block content %}
-<section class="hero is-warning">
+<section class="hero is-medium is-primary is-bold">
     <div class="hero-body">
-        <p class="title">
-            Warning hero
-        </p>
-        <p class="subtitle">
-            Warning subtitle
-        </p>
+        <div class="container">
+            <h1 class="title">
+                Primary bold title
+            </h1>
+            <h2 class="subtitle">
+                Primary bold subtitle
+            </h2>
+        </div>
     </div>
 </section>
+
+<div class="toast">
+    <div class="toast-content">
+        <i class="fas fa-solid fa-check check"></i>
+        <div class="message">
+            <span class="text text-1">Success</span>
+            <span class="text text-2">Your changes has been saved</span>
+        </div>
+    </div>
+    <i class="fas fa-solid fa-times close"></i>
+    <div class="progress"></div>
+</div>
+
+<button class="button is-info">Show Toast</button>
+
+
 {% endblock %}

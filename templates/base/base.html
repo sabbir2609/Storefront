@@ -1,33 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        {% block title %}My amazing site{% endblock %}
+        {% block title %}Sabbir{% endblock %}
     </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel='stylesheet' href="{% static 'style.css' %}" type='text/css'>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet" /> -->
+    <link rel='stylesheet' href="{% static 'css/halfmoon.css' %}" type='text/css'>
+    <link rel='stylesheet' href="{% static 'css/style.css' %}" type='text/css'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 </head>
 
 <body>
-    <header>
-        {% include "base/navbar.html" %}
-    </header>
-    <span></span>
-    <div class="">
-        {% block content %}
-        {% endblock %}
+    <!-- Page wrapper with overlayed (only on small screens and down) sidebar -->
+    <div class="page-wrapper with-navbar with-sidebar with-navbar-fixed-bottom" data-sidebar-type="full-height">
+        <!-- Sidebar overlay -->
+        <div class="sidebar-overlay" onclick="halfmoon.toggleSidebar()"></div>
+
+        <!-- Navbar -->
+        <nav class="navbar">
+            {% include "base/navbar.html" %}
+        </nav>
+        <!-- Overlayed (only on small screens and down) sidebar -->
+        <div class="sidebar">
+            {% include "base/sidebar.html" %}
+        </div>
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <!-- Navbar fixed bottom -->
+        <!-- <nav class="navbar navbar-fixed-bottom">
+                ...
+            </nav> -->
     </div>
 
-
-    {% include "base/footer.html" %}
-
-    <script src="{% static 'main.js' %}"></script>
+    <!-- Requires halfmoon.js for toggling sidebar -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script> -->
+    <script src="{% static 'js/halfmoon.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

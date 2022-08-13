@@ -29,6 +29,7 @@ INTERNAL_IPS = [
     # ...
 ]
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Application definition
 

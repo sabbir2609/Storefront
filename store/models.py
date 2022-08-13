@@ -100,9 +100,6 @@ class OrderItem(models.Model):
 class Address(models.Model):
     street = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
-    # make One-To_One Relationship with customer
-    # customer = models.OneToOneField(Customer, on_delete=models.CASCADE, primary_key=True)
-
     # If the customer has multiple addresses
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     zip = models.SmallIntegerField(null=True)

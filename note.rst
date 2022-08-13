@@ -35,3 +35,12 @@ __________
 |        'PORT': '5432',
 |    }
 | }
+
+__________
+| problem
+duplicate key value violates unique constraint "store_product_pkey"
+DETAIL:  Key (id)=(17) already exists.
+| Solve
+BEGIN;
+SELECT setval(pg_get_serial_sequence('"store_product"','id'), coalesce(max("id"), 1), max("id") IS NOT null) FROM "store_product";
+COMMIT;

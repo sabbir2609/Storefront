@@ -33,13 +33,3 @@ class CollectionViewSet(ModelViewSet):
             return Response({'error':'Not Allowed! Associated with products'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
         collection.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-# Template view section
-
-def product_list_template(request):
-    queryset = Product.objects.all()
-    paginator = Paginator(queryset, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'store/products.html', {'page_obj': page_obj})

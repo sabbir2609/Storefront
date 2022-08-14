@@ -1,5 +1,5 @@
 ﻿asgiref==3.5.2
-Django == 4.1
+Django
 django-admin-interface==0.19.1
 django-colorfield==0.7.1
 django-debug-toolbar==3.5.0

@@ -1,5 +1,5 @@
 ﻿asgiref==3.5.2
- Django
+Django == 4.1
 django-admin-interface==0.19.1
 django-colorfield==0.7.1
 django-debug-toolbar==3.5.0
@@ -17,3 +17,4 @@ tzdata==2022.1
 wincertstore==0.2
 gunicorn
 whitenoise
+drf-nested-routers

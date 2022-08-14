@@ -1,11 +1,13 @@
 from django.urls import path
-from rest_framework.routers import SimpleRouter, DefaultRouter
-from .views import ProductViewSet, CollectionViewSet
+from django.urls.conf import include
+from .views import ProductViewSet, CollectionViewSet, ReviewViewSet
+from rest_framework_nested import routers
 
-router = DefaultRouter()
+router = routers.DefaultRouter()
 router.register('products', ProductViewSet)
 router.register('collections', CollectionViewSet)
 
-urlpatterns = []
+products_router = routers.NestedDefaultRouter(router, 'products', lookup='product')
+products_router.register('reviews', ReviewViewSet, basename='product-reviews')
 
-urlpatterns += router.urls
+urlpatterns = router.urls + products_router.urls

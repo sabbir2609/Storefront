@@ -1,26 +1,19 @@
-from statistics import quantiles
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
 from django.db.models.aggregates import Count
 from .models import Product, Collection
 from .serializer import ProductSerializer, CollectionSerializer
 
 
-class ProductList(ListCreateAPIView):
+class ProductViewSet(ModelViewSet):
     queryset =  Product.objects.select_related('collection').all()
     serializer_class =  ProductSerializer
+
     def get_serializer_context(self):
         return {'request': self.request}
-
-
-class ProductDetail(RetrieveUpdateDestroyAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
 
     def delete(self, request, pk):
         product = get_object_or_404(Product, pk=pk)
@@ -29,13 +22,10 @@ class ProductDetail(RetrieveUpdateDestroyAPIView):
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class CollectionList(ListCreateAPIView):
+# Use ReadOnlyModelViewSet for block writing
+class CollectionViewSet(ModelViewSet):
     queryset = Collection.objects.annotate(products_count=Count('products')).all()
-    serializer_class = CollectionSerializer
-
-class CollectionDetail(RetrieveUpdateDestroyAPIView):
-    queryset = Collection.objects.annotate(products_count=Count('products'))
-    serializer_class = CollectionSerializer
+    serializer_class = CollectionSerializer    
 
     def delete(self, request, pk):
         collection = get_object_or_404(Collection.objects.annotate(products_count=Count('products')), pk=pk)
@@ -43,6 +33,7 @@ class CollectionDetail(RetrieveUpdateDestroyAPIView):
             return Response({'error':'Not Allowed! Associated with products'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
         collection.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 # Template view section
 

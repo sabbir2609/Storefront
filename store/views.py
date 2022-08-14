@@ -1,11 +1,10 @@
-from django.shortcuts import render, get_object_or_404
-from django.core.paginator import Paginator
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
+
 from django.db.models.aggregates import Count
-from .models import OrderItem, Product, Collection
-from .serializer import ProductSerializer, CollectionSerializer
+from .models import OrderItem, Product, Collection, Review
+from .serializer import ProductSerializer, CollectionSerializer, ReviewSerializer
 
 
 class ProductViewSet(ModelViewSet):
@@ -28,3 +27,9 @@ class CollectionViewSet(ModelViewSet):
         if Collection.products.count() > 0:
             return Response({'error':'Not Allowed! Associated with products'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
         return super().destroy(request, *args, **kwargs)
+
+
+class ReviewViewSet(ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+    

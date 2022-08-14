@@ -18,3 +18,4 @@ wincertstore==0.2
 gunicorn
 whitenoise
 drf-nested-routers
+django-filter

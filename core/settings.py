@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     # add debug toolbar
     "debug_toolbar",
 
+    'django_filters',
+
     # new apps
     'playground',
     'store',

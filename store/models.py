@@ -1,5 +1,4 @@
-from itertools import product
-import re
+from uuid import uuid4
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.db.models import CharField
@@ -77,12 +76,12 @@ class Customer(models.Model):
 class Order(models.Model):
     PAYMENT_STATUS_PENDING = 'P'
     PAYMENT_STATUS_COMPLETE = 'C'
-    PAYMENT_STATUS_FAIELD = 'F'
+    PAYMENT_STATUS_FAILED = 'F'
 
     PAYMENT_STATUS_CHOICES = [
         (PAYMENT_STATUS_PENDING, 'Pending'),
         (PAYMENT_STATUS_COMPLETE, 'Complete'),
-        (PAYMENT_STATUS_FAIELD, 'Failed'),
+        (PAYMENT_STATUS_FAILED, 'Failed'),
 
     ]
 
@@ -108,13 +107,17 @@ class Address(models.Model):
 
 
 class Cart(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid4)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
 class CartItem(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveSmallIntegerField()
+
+    class Meta:
+        unique_together = [['cart','product']]
 
 
 class Review(models.Model):

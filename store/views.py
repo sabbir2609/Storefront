@@ -9,8 +9,8 @@ from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, DestroyM
 
 from .pagination import DefaultPagination
 from .filters import ProductFilter
-from .models import Cart, OrderItem, Product, Collection, Review
-from .serializer import CartSerializer, ProductSerializer, CollectionSerializer, ReviewSerializer
+from .models import Cart, CartItem, OrderItem, Product, Collection, Review
+from .serializer import CartItemSerializer, CartSerializer, ProductSerializer, CollectionSerializer, ReviewSerializer
 
 
 class ProductViewSet(ModelViewSet):
@@ -56,4 +56,13 @@ class CartViewSet(CreateModelMixin,
                   GenericViewSet):
     queryset = Cart.objects.prefetch_related('items__product').all()
     serializer_class = CartSerializer
+
+class CartItemViewSet(ModelViewSet):
+    serializer_class = CartItemSerializer
+    def get_queryset(self):
+        return CartItem.objects\
+            .filter(cart_id=self.kwargs['cart_pk']) \
+            .select_related('product')
+    
+
 

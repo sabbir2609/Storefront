@@ -53,10 +53,10 @@ INSTALLED_APPS = [
     # add debug toolbar
     "debug_toolbar",
 
+    # 3rd party
     'django_filters',
 
     # new apps
-    'playground',
     'store',
     'tags',
     'likes',

@@ -5,6 +5,8 @@ from django.db.models import CharField
 from django.conf import settings
 from django.contrib import admin
 
+from store import permission
+
 
 class Promotion(models.Model):
     description = models.CharField(max_length=255)
@@ -67,6 +69,9 @@ class Customer(models.Model):
 
     class Meta:
         ordering = ['user__last_name', 'user__first_name']
+        permissions = [
+            ('view_history', 'Can View History')
+        ]
 
     @admin.display(ordering='user__first_name')
     def first_name(self):

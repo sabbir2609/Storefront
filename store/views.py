@@ -5,14 +5,18 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework.filters import SearchFilter, OrderingFilter
-from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, DestroyModelMixin
+from rest_framework.mixins import CreateModelMixin,\
+                                  RetrieveModelMixin,\
+                                  UpdateModelMixin,\
+                                  DestroyModelMixin
 
 from .pagination import DefaultPagination
 from .filters import ProductFilter
-from .models import Cart, CartItem, OrderItem, Product, Collection, Review
+from .models import Cart, CartItem, Customer, OrderItem, Product, Collection, Review
 from .serializer import AddCartItemSerializer,\
                          CartItemSerializer,\
                          CartSerializer,\
+                         CustomerSerializer,\
                          ProductSerializer,\
                          CollectionSerializer,\
                          ReviewSerializer,\
@@ -82,4 +86,6 @@ class CartItemViewSet(ModelViewSet):
             .select_related('product')
     
 
-
+class CustomerViewSet(CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, GenericViewSet):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer

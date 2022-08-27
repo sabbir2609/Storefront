@@ -1,3 +1,4 @@
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -189,15 +190,17 @@ REST_FRAMEWORK = {
     ),
 }
 
-SIMPLE_JWT = {
-   'AUTH_HEADER_TYPES': ('JWT',),
-}
-
-
 AUTH_USER_MODEL = 'main.User'
 
 DJOSER = {
     'SERIALIZERS':{
-        'user_create':'main.serializer.UserCreateSerializer'
+        'user_create':'main.serializer.UserCreateSerializer',
+        'current_user':'main.serializer.UserSerializer'
     }
+}
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=10),
 }

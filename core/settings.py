@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     
     # django REST Framework
     'rest_framework',
+    # auth
+    'djoser',
 
     # add debug toolbar
     "debug_toolbar",
@@ -182,9 +184,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING' : False,
-    # use pagination for everywhere
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    # 'PAGE_SIZE': 10
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
 }
 
 

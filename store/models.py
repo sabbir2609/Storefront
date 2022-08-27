@@ -46,8 +46,8 @@ class Product(models.Model):
 
 class Customer(models.Model):
     MEMBERSHIP_BRONZE = 'B'
-    MEMBERSHIP_SILVER = 'B'
-    MEMBERSHIP_GOLD = 'B'
+    MEMBERSHIP_SILVER = 'S'
+    MEMBERSHIP_GOLD = 'G'
 
     MEMBERSHIP_CHOICES = [
         (MEMBERSHIP_BRONZE, 'Bronze'),

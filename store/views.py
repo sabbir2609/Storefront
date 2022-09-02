@@ -127,3 +127,4 @@ class OrderViewSet(ModelViewSet):
         
         (customer_id, created) = Customer.objects.only('id').get_or_create(user_id=user.id) # review here
         return Order.objects.filter(customer_id=customer_id)
+        

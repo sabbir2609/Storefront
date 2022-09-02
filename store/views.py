@@ -26,7 +26,7 @@ from .serializer import AddCartItemSerializer,\
     ProductSerializer,\
     CollectionSerializer,\
     ReviewSerializer,\
-    UpdateCartItemSerializer
+    UpdateCartItemSerializer, UpdateOrderSerializer
 
 
 class ProductViewSet(ModelViewSet):
@@ -142,6 +142,8 @@ class OrderViewSet(ModelViewSet):
     def get_serializer_class(self):
         if self.request.method == 'POST':
             return CreateOrderSerializer
+        if self.request.method == 'PATCH':
+            return UpdateOrderSerializer
         return OrderSerializer
 
     def get_queryset(self):

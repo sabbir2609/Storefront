@@ -19,7 +19,7 @@ from .filters import ProductFilter
 from .models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, Review
 from .serializer import AddCartItemSerializer,\
                          CartItemSerializer,\
-                         CartSerializer,\
+                         CartSerializer, CreateOrderSerializer,\
                          CustomerSerializer, OrderSerializer,\
                          ProductSerializer,\
                          CollectionSerializer,\
@@ -117,8 +117,16 @@ class CustomerViewSet(ModelViewSet):
 
 
 class OrderViewSet(ModelViewSet):
-    serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return CreateOrderSerializer
+        return OrderSerializer
+
+        
+    def get_serializer_context(self):
+        return {'user_id': self.request.user.id}
 
     def get_queryset(self):
         user = self.request.user
@@ -127,4 +135,3 @@ class OrderViewSet(ModelViewSet):
         
         (customer_id, created) = Customer.objects.only('id').get_or_create(user_id=user.id) # review here
         return Order.objects.filter(customer_id=customer_id)
-        

@@ -10,9 +10,9 @@ from rest_framework import status
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.mixins import CreateModelMixin,\
-                                  RetrieveModelMixin,\
-                                  UpdateModelMixin,\
-                                  DestroyModelMixin
+    RetrieveModelMixin,\
+    UpdateModelMixin,\
+    DestroyModelMixin
 
 from store.permission import FullDjangoModelPermissions, IsAdminOrReadOnly, ViewCustomerHistoryPermission
 
@@ -20,18 +20,18 @@ from .pagination import DefaultPagination
 from .filters import ProductFilter
 from .models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, Review
 from .serializer import AddCartItemSerializer,\
-                         CartItemSerializer,\
-                         CartSerializer, CreateOrderSerializer,\
-                         CustomerSerializer, OrderSerializer,\
-                         ProductSerializer,\
-                         CollectionSerializer,\
-                         ReviewSerializer,\
-                         UpdateCartItemSerializer
+    CartItemSerializer,\
+    CartSerializer, CreateOrderSerializer,\
+    CustomerSerializer, OrderSerializer,\
+    ProductSerializer,\
+    CollectionSerializer,\
+    ReviewSerializer,\
+    UpdateCartItemSerializer
 
 
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
-    serializer_class =  ProductSerializer
+    serializer_class = ProductSerializer
     # for filtering
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_class = ProductFilter
@@ -42,20 +42,24 @@ class ProductViewSet(ModelViewSet):
 
     def get_serializer_context(self):
         return {'request': self.request}
+
     def destroy(self, request, *args, **kwargs):
         if OrderItem.objects.filter(product_id=kwargs['pk']).count() > 0:
-            return Response({'error' : 'Product Can Not Be Deleted Because It Is Associated With An Order Item'},status=status.HTTP_405_METHOD_NOT_ALLOWED)
+            return Response({'error': 'Product Can Not Be Deleted Because It Is Associated With An Order Item'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
         return super().destroy(request, *args, **kwargs)
 
 # Use ReadOnlyModelViewSet for block writing
+
+
 class CollectionViewSet(ModelViewSet):
-    queryset = Collection.objects.annotate(products_count=Count('products')).all()
+    queryset = Collection.objects.annotate(
+        products_count=Count('products')).all()
     serializer_class = CollectionSerializer
     permission_classes = [IsAdminOrReadOnly]
 
     def destroy(self, request, *args, **kwargs):
         if Collection.products.count() > 0:
-            return Response({'error':'Not Allowed! Associated with products'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+            return Response({'error': 'Not Allowed! Associated with products'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
         return super().destroy(request, *args, **kwargs)
 
 
@@ -68,12 +72,14 @@ class ReviewViewSet(ModelViewSet):
     def get_serializer_context(self):
         return {'product_id': self.kwargs['product_pk']}
 
+
 class CartViewSet(CreateModelMixin,
                   RetrieveModelMixin,
                   DestroyModelMixin,
                   GenericViewSet):
     queryset = Cart.objects.prefetch_related('items__product').all()
     serializer_class = CartSerializer
+
 
 class CartItemViewSet(ModelViewSet):
     http_method_names = ['get', 'post', 'patch', 'delete']
@@ -92,21 +98,21 @@ class CartItemViewSet(ModelViewSet):
         return CartItem.objects\
             .filter(cart_id=self.kwargs['cart_pk']) \
             .select_related('product')
-    
+
 
 class CustomerViewSet(ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_classes = [IsAdminUser] # FullDjangoModelPermissions use this
+    permission_classes = [IsAdminUser]  # FullDjangoModelPermissions use this
 
     @action(detail=True, permission_classes=[ViewCustomerHistoryPermission])
     def history(self, request, pk):
         return Response('ok')
 
-
-    @action(detail=False, methods=['GET','PUT'], permission_classes=[IsAuthenticated])
+    @action(detail=False, methods=['GET', 'PUT'], permission_classes=[IsAuthenticated])
     def me(self, request):
-        (customer, created) = Customer.objects.get_or_create(user_id=request.user.id)
+        (customer, created) = Customer.objects.get_or_create(
+            user_id=request.user.id)
         if request.method == "GET":
             serializer = CustomerSerializer(customer)
             return Response(serializer.data)
@@ -117,12 +123,17 @@ class CustomerViewSet(ModelViewSet):
             return Response(serializer.data)
 
 
-
 class OrderViewSet(ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    http_method_names = ['get', 'patch', 'delete', 'head', 'options']
+
+    def get_permissions(self):
+        if self.request.method in ['PATCH', 'DELETE']:
+            return [IsAdminUser()]
+        return [IsAuthenticated()]
 
     def create(self, request, *args, **kwargs):
-        serializer = CreateOrderSerializer(data=request.data, context={'user_id': self.request.user.id})
+        serializer = CreateOrderSerializer(data=request.data, context={
+                                           'user_id': self.request.user.id})
         serializer.is_valid(raise_exception=True)
         order = serializer.save()
         serializer = OrderSerializer(order)
@@ -137,6 +148,7 @@ class OrderViewSet(ModelViewSet):
         user = self.request.user
         if user.is_staff:
             return Order.objects.all()
-        
-        (customer_id, created) = Customer.objects.only('id').get_or_create(user_id=user.id) # review here
+
+        (customer_id, created) = Customer.objects.only(
+            'id').get_or_create(user_id=user.id)  # review here
         return Order.objects.filter(customer_id=customer_id)

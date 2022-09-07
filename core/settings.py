@@ -18,7 +18,6 @@ if not IS_HEROKU:
     DEBUG = True
 
 
-
 if IS_HEROKU:
     ALLOWED_HOSTS = ["*"]
 else:
@@ -35,7 +34,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Application definition
 
 INSTALLED_APPS = [
-    
+
     # for admin theme
     'colorfield',
     'admin_interface',
@@ -47,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # django REST Framework
     'rest_framework',
     # auth
@@ -118,24 +117,25 @@ if IS_HEROKU:
         # }
 
         'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
 else:
     DATABASES = {
-        # 'default': {
-        #     'ENGINE': 'django.db.backends.postgresql',
-        #     'NAME': 'storefront',
-        #     'USER': 'postgres',
-        #     'PASSWORD': '2609',
-        #     'HOST': '127.0.0.1',
-        #     'PORT': '5432',
-        # }
         'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'storefront3',
+            'USER': 'postgres',
+            'PASSWORD': '9959',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
+
+        # 'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        # }
     }
 
 
@@ -184,21 +184,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # disable decimal -> string for rest framework
 
 REST_FRAMEWORK = {
-    'COERCE_DECIMAL_TO_STRING' : False,
+    'COERCE_DECIMAL_TO_STRING': False,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
-        ]
+    ]
 }
 
 AUTH_USER_MODEL = 'main.User'
 
 DJOSER = {
-    'SERIALIZERS':{
-        'user_create':'main.serializer.UserCreateSerializer',
-        'current_user':'main.serializer.UserSerializer'
+    'SERIALIZERS': {
+        'user_create': 'main.serializer.UserCreateSerializer',
+        'current_user': 'main.serializer.UserSerializer'
     }
 }
 

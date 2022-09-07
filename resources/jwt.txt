@@ -3,10 +3,3 @@ create
 http://127.0.0.1:8000/auth/jwt/create
 
 for jhon smith 
-
-
-
-{
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2Mjk4MzYyMSwianRpIjoiYTUwYzcyZjFjZjMyNGE3MTkwOWYzZDJjZGI3OTNlNjMiLCJ1c2VyX2lkIjoyfQ.A0ADcorqNDL4rKINf60Yh3WqjM63UKbVCLC8Zi7EAdI",
-    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjA2MDIxLCJqdGkiOiI5NTZkYzM5NmM3ZTY0NzRiOWU0ZWZhYTRiNjQxYTljMyIsInVzZXJfaWQiOjJ9.WUiijUodb67Y1qg74ny2F_sV5Aypc1-e3mi8YDL2Kyw"
-}

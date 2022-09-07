@@ -15,7 +15,8 @@ class Promotion(models.Model):
 
 class Collection(models.Model):
     title = models.CharField(max_length=255)
-    featured_product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+    featured_product = models.ForeignKey(
+        'Product', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
 
     def __str__(self) -> CharField:
         return self.title
@@ -35,7 +36,8 @@ class Product(models.Model):
     )
     inventory = models.IntegerField(validators=[MinValueValidator(1)])
     last_update = models.DateTimeField(auto_now=True)
-    collection = models.ForeignKey(Collection, on_delete=models.PROTECT, related_name='products')
+    collection = models.ForeignKey(
+        Collection, on_delete=models.PROTECT, related_name='products')
 
     promotions = models.ManyToManyField(Promotion, blank=True)
 
@@ -59,8 +61,10 @@ class Customer(models.Model):
 
     phone = models.CharField(max_length=255)
     birth_date = models.DateField(null=True)
-    membership = models.CharField(max_length=1, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_BRONZE)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    membership = models.CharField(
+        max_length=1, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_BRONZE)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f'{self.user.first_name} {self.user.last_name}'
@@ -76,6 +80,7 @@ class Customer(models.Model):
     @admin.display(ordering='user__first_name')
     def first_name(self):
         return self.user.first_name
+
     @admin.display(ordering='user__last_name')
     def last_name(self):
         return self.user.last_name
@@ -94,9 +99,11 @@ class Order(models.Model):
     ]
 
     placed_at = models.DateTimeField(auto_now_add=True)
-    payment_status = models.CharField(max_length=1, choices=PAYMENT_STATUS_CHOICES, default=PAYMENT_STATUS_PENDING)
+    payment_status = models.CharField(
+        max_length=1, choices=PAYMENT_STATUS_CHOICES, default=PAYMENT_STATUS_PENDING)
 
-    customer = models.ForeignKey(Customer, on_delete=models.PROTECT)  # never delete order
+    customer = models.ForeignKey(
+        Customer, on_delete=models.PROTECT)  # never delete order
 
     class Meta:
         permissions = [
@@ -105,8 +112,10 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.PROTECT, related_name='items')
-    product = models.ForeignKey(Product, on_delete=models.PROTECT, related_name='orderitems')
+    order = models.ForeignKey(
+        Order, on_delete=models.PROTECT, related_name='items')
+    product = models.ForeignKey(
+        Product, on_delete=models.PROTECT, related_name='orderitems')
     quantity = models.PositiveSmallIntegerField()
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
 
@@ -125,18 +134,20 @@ class Cart(models.Model):
 
 
 class CartItem(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
+    cart = models.ForeignKey(
+        Cart, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1)]
     )
 
     class Meta:
-        unique_together = [['cart','product']]
+        unique_together = [['cart', 'product']]
 
 
 class Review(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='reviews')
     name = models.CharField(max_length=255)
     description = models.TextField()
     date = models.DateField(auto_now_add=True)

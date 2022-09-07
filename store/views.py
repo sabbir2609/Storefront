@@ -1,3 +1,4 @@
+from itertools import product
 from multiprocessing import context
 from wsgiref import validate
 from django.db.models.aggregates import Count
@@ -18,11 +19,11 @@ from store.permission import FullDjangoModelPermissions, IsAdminOrReadOnly, View
 
 from .pagination import DefaultPagination
 from .filters import ProductFilter
-from .models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, Review
+from .models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, ProductImage, Review
 from .serializer import AddCartItemSerializer,\
     CartItemSerializer,\
     CartSerializer, CreateOrderSerializer,\
-    CustomerSerializer, OrderSerializer,\
+    CustomerSerializer, OrderSerializer, ProductImageSerializer,\
     ProductSerializer,\
     CollectionSerializer,\
     ReviewSerializer,\
@@ -30,9 +31,8 @@ from .serializer import AddCartItemSerializer,\
 
 
 class ProductViewSet(ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.prefetch_related('images').all()
     serializer_class = ProductSerializer
-    # for filtering
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_class = ProductFilter
     pagination_class = DefaultPagination
@@ -154,3 +154,13 @@ class OrderViewSet(ModelViewSet):
         customer_id = Customer.objects.only(
             'id').get(user_id=user.id)  # review here ~ command Query separation principle
         return Order.objects.filter(customer_id=customer_id)
+
+
+class ProductImageViewSet(ModelViewSet):
+    serializer_class = ProductImageSerializer
+
+    def get_serializer_context(self):
+        return {'product_id': self.kwargs['product_pk']}
+
+    def get_queryset(self):
+        return ProductImage.objects.filter(product_id=self.kwargs['product_pk'])

@@ -5,7 +5,7 @@ from django.db.models import CharField
 from django.conf import settings
 from django.contrib import admin
 
-from store import permission
+from store import permission, validators
 
 
 class Promotion(models.Model):
@@ -51,7 +51,8 @@ class Product(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='store/images')
+    image = models.ImageField(upload_to='store/images',
+                              validators=[validators.validate_file_size])
 
 
 class Customer(models.Model):

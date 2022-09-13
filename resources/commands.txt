@@ -1,4 +1,5 @@
 python manage.py runserver
 docker run -p 6379:6379 redis
 celery -A core worker --loglevel=info
-celery -A core beat 
+celery -A core beat
+celery -A core flower

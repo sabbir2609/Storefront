@@ -1,6 +1,7 @@
 from datetime import timedelta
 from pathlib import Path
 import os
+from celery.schedules import crontab
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -218,3 +219,12 @@ ADMINS = [
 ]
 
 CELERY_BROKER_URL = 'redis://localhost:6379/1'
+
+# command -> celery -A core beat
+CELERY_BEAT_SCHEDULE = {
+    'notify_customers': {
+        'task': 'home.tasks.notify_customers',
+        'schedule': 5, # crontab(day_of_week=1, hour=7, minute=30)
+        'args': ['Hello World']
+    }
+}

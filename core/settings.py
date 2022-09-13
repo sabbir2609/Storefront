@@ -128,7 +128,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'storefront3',
+            'NAME': 'storefront',
             'USER': 'postgres',
             'PASSWORD': '9959',
             'HOST': '127.0.0.1',
@@ -216,3 +216,5 @@ DEFAULT_FROM_EMAIL = 'from@sabbir.inc'
 ADMINS = [
     ('Mosh', 'admin@moshbuy.com')
 ]
+
+CELERY_BROKER_URL = 'redis://localhost:6379/1'

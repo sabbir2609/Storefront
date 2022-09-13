@@ -17,7 +17,7 @@ coreschema==0.0.4
 cryptography==38.0.1
 defusedxml==0.7.1
 Deprecated==1.2.13
-Django
+Django==4.1.1
 django-admin-interface==0.20.0
 django-colorfield==0.7.2
 django-cors-headers==3.13.0

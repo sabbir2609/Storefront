@@ -54,3 +54,5 @@ class TestRetrieveCollections:
             'title': collection.title,
             'products_count': 0
         }
+
+# TODO create product endpoints testing

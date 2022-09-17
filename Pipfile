@@ -18,6 +18,7 @@ whitenoise = "*"
 celery = "*"
 psycopg2 = "*"
 flower = "*"
+django-silk = "*"
 
 [dev-packages]
 pytest = "*"

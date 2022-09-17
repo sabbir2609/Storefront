@@ -10,16 +10,14 @@ class WebsiteUser(HttpUser):
         collection_id = randint(2, 6)
         self.client.get(
             f'/store/products/?collection_id={collection_id}',
-            name='/store/products'
-        )
+            name='/store/products')
 
     @task(4)
     def view_product(self):
         product_id = randint(1, 1000)
         self.client.get(
             f'/store/products/{product_id}',
-            name='/store/products/:id'
-        )
+            name='/store/products/:id')
 
     @task(1)
     def add_to_cart(self):

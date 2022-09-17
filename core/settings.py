@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     # 3rd party
     'django_filters',
     "corsheaders",
+    'silk',
 
     # new apps
     'store',
@@ -87,7 +88,11 @@ MIDDLEWARE = [
     # WhiteNoiseMiddleware
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+
 ]
+
+# if DEBUG:
+#     MIDDLEWARE += ['silk.middleware.SilkyMiddleware']  # silk middleware
 
 ROOT_URLCONF = 'core.urls'
 

@@ -6,7 +6,7 @@ class WebsiteUser(HttpUser):
     wait_time = between(1, 5)
 
     @task(2)
-    def view_product(self):
+    def view_products(self):
         collection_id = randint(2, 6)
         self.client.get(
             f'/store/products/?collection_id={collection_id}',
@@ -31,6 +31,6 @@ class WebsiteUser(HttpUser):
         )
 
     def on_start(self):
-        response = self.client.post('store/carts/')
+        response = self.client.post('/store/carts/')
         result = response.json()
         self.cart_id = result['id']

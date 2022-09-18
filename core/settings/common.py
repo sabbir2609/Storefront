@@ -1,31 +1,8 @@
 from datetime import timedelta
 from pathlib import Path
 import os
-from celery.schedules import crontab
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-IS_HEROKU = "DYNO" in os.environ
-
-SECRET_KEY = 'django-insecure-$&ovi=euv((gdjh1xbuck7ou3rzj1xa*xa%zn6sindeh70gmbp'
-
-if 'SECRET_KEY' in os.environ:
-    SECRET_KEY = os.environ["SECRET_KEY"]
-
-if not IS_HEROKU:
-    DEBUG = True
-
-
-if IS_HEROKU:
-    ALLOWED_HOSTS = ["*"]
-else:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok.io']
-
-INTERNAL_IPS = [
-    # ...
-    "127.0.0.1",
-    # ...
-]
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8001",
@@ -38,12 +15,9 @@ CORS_ALLOWED_ORIGINS = [
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 INSTALLED_APPS = [
-
-    # for admin theme
     'colorfield',
     'admin_interface',
 
-    # pre-installed
     'django.contrib.admin',
     'django.contrib.sessions',
     'django.contrib.auth',
@@ -51,20 +25,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # django REST Framework
     'rest_framework',
-    # auth
     'djoser',
-
-    # add debug toolbar
     "debug_toolbar",
-
-    # 3rd party
     'django_filters',
     "corsheaders",
     'silk',
 
-    # new apps
     'store',
     'tags',
     'likes',
@@ -75,18 +42,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
-    # WhiteNoiseMiddleware
     "whitenoise.middleware.WhiteNoiseMiddleware",
-
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    # debug-toolbar middleware
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 
 ]
@@ -114,47 +76,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-if IS_HEROKU:
-    DATABASES = {
-        # 'default': {
-        #     'ENGINE': 'django.db.backends.postgresql',
-        #     'NAME': 'd4q9e2uqv8kt1a',
-        #     'USER': 'hlukwukzbywnhv',
-        #     'PASSWORD': '9284be841954166ffc920be7b2c4f43e6779810c18acad9d854ed87d15bb4f04',
-        #     'HOST': 'ec2-54-208-104-27.compute-1.amazonaws.com',
-        #     'PORT': '5432',
-        # }
-
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'storefront',
-            'USER': 'postgres',
-            'PASSWORD': '9959',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-        }
-
-        # 'default': {
-        #     'ENGINE': 'django.db.backends.postgresql',
-        #     'NAME': 'd4q9e2uqv8kt1a',
-        #     'USER': 'hlukwukzbywnhv',
-        #     'PASSWORD': '9284be841954166ffc920be7b2c4f43e6779810c18acad9d854ed87d15bb4f04',
-        #     'HOST': 'ec2-54-208-104-27.compute-1.amazonaws.com',
-        #     'PORT': '5432',
-        # }
-
-        # 'default': {
-        #     'ENGINE': 'django.db.backends.sqlite3',
-        #     'NAME': BASE_DIR / 'db.sqlite3',
-        # }
-    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -181,19 +102,16 @@ USE_TZ = True
 
 STATIC_ROOT = 'staticfiles/'
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-# Default primary key field type
 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# disable decimal -> string for rest framework
 
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
@@ -234,11 +152,10 @@ ADMINS = [
 
 CELERY_BROKER_URL = 'redis://localhost:6379/1'
 
-# command -> celery -A core beat
 CELERY_BEAT_SCHEDULE = {
     'notify_customers': {
         'task': 'home.tasks.notify_customers',
-        'schedule': 5,  # crontab(day_of_week=1, hour=7, minute=30)
+        'schedule': 5,
         'args': ['Hello World']
     }
 }
@@ -250,6 +167,33 @@ CACHES = {
         "LOCATION": "redis://127.0.0.1:6379/2",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler'
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'general.log',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'file'],
+            'level': os.environ.get('DJANGO_LOG_LEVEL', 'INFO')
+        }
+    },
+    'formatters': {
+        'verbose': {
+            'format': '{asctime} ({levelname}) - {name} - {message}',
+            'style': '{'
         }
     }
 }

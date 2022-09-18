@@ -1,2 +1,5 @@
 *.pyc
+/media/
+static
+general.log
 token.txt

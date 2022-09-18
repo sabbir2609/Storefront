@@ -1,18 +1,17 @@
-from email.headerregistry import ContentDispositionHeader
-from django.core.cache import cache
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.utils.decorators import method_decorator
 import requests
+from django.views.decorators.cache import cache_page
+from rest_framework.views import APIView
 
 
-def test(request):
-    key = 'httpbin_result'
-    if cache.get(key) is None:
+class TestView(APIView):
+    @method_decorator(cache_page(5 * 60))
+    def get(self, request):
         response = requests.get('https://httpbin.org/delay/2')
         data = response.json()
-        cache.set(key, data)
-
-    return render(request, 'test/test.html', {'data': cache.get(key)})
+        return render(request, 'test/test.html', {'data': data})
 
 
 class HomepageView(TemplateView):

@@ -19,6 +19,7 @@ celery = "*"
 psycopg2 = "*"
 flower = "*"
 django-silk = "*"
+django-redis = "*"
 
 [dev-packages]
 pytest = "*"

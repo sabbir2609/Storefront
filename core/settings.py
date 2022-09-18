@@ -75,6 +75,10 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+
+    # WhiteNoiseMiddleware
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -84,10 +88,6 @@ MIDDLEWARE = [
 
     # debug-toolbar middleware
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-
-    # WhiteNoiseMiddleware
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
 
 ]
 

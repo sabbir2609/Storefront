@@ -147,7 +147,7 @@ EMAIL_PORT = 2525
 DEFAULT_FROM_EMAIL = 'from@sabbir.inc'
 
 ADMINS = [
-    ('Mosh', 'admin@moshbuy.com')
+    ('Sabbir', 'admin@sabbir.inc')
 ]
 
 CELERY_BROKER_URL = 'redis://localhost:6379/1'

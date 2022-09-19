@@ -21,7 +21,7 @@ class TestView(APIView):
             data = response.json()
         except requests.ConnectionError:
             logger.critical('httpbin is offline')
-        return render(request, 'test/test.html', {'data': data})
+        return render(request, 'test/log-test.html', {'data': data})
 
 
 class RedisView(APIView):
@@ -29,7 +29,7 @@ class RedisView(APIView):
     def get(self, request):
         response = requests.get('https://httpbin.org/delay/2')
         data = response.json()
-        return render(request, 'test/test.html', {'data': data})
+        return render(request, 'test/redis-test.html', {'data': data})
 
 
 class HomepageView(TemplateView):

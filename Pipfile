@@ -20,6 +20,7 @@ psycopg2 = "*"
 flower = "*"
 django-silk = "*"
 django-redis = "*"
+gunicorn = "*"
 
 [dev-packages]
 pytest = "*"

@@ -21,6 +21,7 @@ flower = "*"
 django-silk = "*"
 django-redis = "*"
 gunicorn = "*"
+dj-database-url = "*"
 
 [dev-packages]
 pytest = "*"

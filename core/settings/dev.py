@@ -13,17 +13,28 @@ DATABASES = {
         'PORT': '5432',
     }
 
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'd4q9e2uqv8kt1a',
-    #     'USER': 'hlukwukzbywnhv',
-    #     'PASSWORD': '9284be841954166ffc920be7b2c4f43e6779810c18acad9d854ed87d15bb4f04',
-    #     'HOST': 'ec2-54-208-104-27.compute-1.amazonaws.com',
-    #     'PORT': '5432',
-    # }
 
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
 }
+
+CELERY_BROKER_URL = 'redis://localhost:6379/1'
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "TIMEOUT": 10 * 60,
+        "LOCATION": "redis://127.0.0.1:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 2525

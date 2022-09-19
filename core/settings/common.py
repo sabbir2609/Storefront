@@ -138,19 +138,11 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=10),
 }
 
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'localhost'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_PORT = 2525
-DEFAULT_FROM_EMAIL = 'from@sabbir.inc'
-
 ADMINS = [
     ('Sabbir', 'admin@sabbir.inc')
 ]
 
-CELERY_BROKER_URL = 'redis://localhost:6379/1'
+DEFAULT_FROM_EMAIL = 'from@sabbir.inc'
 
 CELERY_BEAT_SCHEDULE = {
     'notify_customers': {
@@ -160,16 +152,6 @@ CELERY_BEAT_SCHEDULE = {
     }
 }
 
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "TIMEOUT": 10 * 60,
-        "LOCATION": "redis://127.0.0.1:6379/2",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
 
 LOGGING = {
     'version': 1,

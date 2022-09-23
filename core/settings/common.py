@@ -144,15 +144,6 @@ ADMINS = [
 
 DEFAULT_FROM_EMAIL = 'from@sabbir.inc'
 
-CELERY_BEAT_SCHEDULE = {
-    'notify_customers': {
-        'task': 'home.tasks.notify_customers',
-        'schedule': 5,
-        'args': ['Hello World']
-    }
-}
-
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

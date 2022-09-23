@@ -22,6 +22,14 @@ DATABASES = {
 
 CELERY_BROKER_URL = 'redis://localhost:6379/1'
 
+CELERY_BEAT_SCHEDULE = {
+    'notify_customers': {
+        'task': 'home.tasks.notify_customers',
+        'schedule': 5,
+        'args': ['Hello World']
+    }
+}
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",

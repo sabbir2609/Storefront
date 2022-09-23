@@ -1,62 +1,60 @@
-<!-- Navbar content (with toggle sidebar button) -->
-<div class="navbar-content">
-    <button class="btn btn-action" type="button" onclick="halfmoon.toggleSidebar()">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-        <span class="sr-only">Toggle sidebar</span> <!-- sr-only = show only on screen readers -->
-    </button>
-</div>
-<!-- Navbar brand -->
-<a href="/" class="navbar-brand mr-10">
-    <!-- <img src="https://www.gethalfmoon.com/static/site/img/fake-logo.svg" alt="Logo"> -->
-    Sabbir Inc.
-</a>
-<!-- Navbar text -->
-<span class="badge font-size-12 text-monospace px-5 px-sm-10">v0.01</span>
-<!-- text-monospace = font-family shifted to monospace -->
-<!-- Navbar nav -->
-<ul class="navbar-nav d-none d-md-flex">
-    <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
-    <li class="nav-item active">
-        <a href="/admin" class="nav-link">Admin</a>
-    </li>
-    <li class="nav-item">
-        <a href="/store/products/" class="nav-link">Products API</a>
-    </li>
-</ul>
-<!-- Navbar form (inline form) -->
-<form class="form-inline d-none d-md-flex ml-auto" action="..." method="...">
-    <button class="btn btn-square" type="button" onclick="halfmoon.toggleDarkMode()">
-        <i class="fas fa-moon"></i>
-        <span class="sr-only">Toggle dark mode</span> <!-- sr-only = show only on screen readers -->
-    </button>
-    <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
-    <input type="text" class="form-control" placeholder="Email address" required="required">
-    <button class="btn btn-primary" type="submit">Sign up</button>
-</form>
-<!-- Navbar content (with the dropdown menu) -->
-<div class="navbar-content d-md-none ml-auto">
-    <button class="btn btn-square mr-5" type="button" onclick="halfmoon.toggleDarkMode()">
-        <i class="fas fa-moon"></i>
-        <span class="sr-only">Toggle dark mode</span> <!-- sr-only = show only on screen readers -->
-    </button>
-    <!-- d-md-none = display: none on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
-    <div class="dropdown with-arrow">
-        <button class="btn" data-toggle="dropdown" type="button" id="navbar-dropdown-toggle-btn-1">
-            <i class="fa fa-angle-down" aria-hidden="true"></i>
-        </button>
-        <div class="dropdown-menu dropdown-menu-right w-200" aria-labelledby="navbar-dropdown-toggle-btn-1">
-            <!-- w-200 = width: 20rem (200px) -->
-            <a href="/admin" class="dropdown-item">Admin</a>
-            <a href=" /store/products/" class="dropdown-item">Products API</a>
-            <div class="dropdown-divider"></div>
-            <div class="dropdown-content">
-                <form action="..." method="...">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Email address" required="required">
-                    </div>
-                    <button class="btn btn-primary btn-block" type="submit">Sign up</button>
-                </form>
+<nav class="navbar is-danger" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item is-size-4" href="/">
+            Storefront
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item">
+                Home
+            </a>
+
+            <a class="navbar-item">
+                Documentation
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                        About
+                    </a>
+                    <a class="navbar-item">
+                        Apis
+                    </a>
+                    <a class="navbar-item">
+                        Contact
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">
+                        Report an issue
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                        Log in
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</nav>

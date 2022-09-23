@@ -3,30 +3,111 @@
 {% block title %}Homepage{% endblock %}
 
 {% block content %}
-<!-- Content -->
-<div class="content">
-    <h2 class="content-title">
-        It was going to rain
-    </h2>
-    <p>
-        The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust
-        his hip over the weatherman. It was going to rain, so he better get outside and prepare. Sleeping in his car was
-        never the plan but sometimes things don't work out as planned. This had been his life for the last three months
-        and he was just beginning to get used to it. He didn't actually enjoy it, but he had accepted it and come to
-        terms with it. Or at least he thought he had. All that changed when he put the key into the ignition, turned it
-        and the engine didn't make a sound.
-    </p>
-
-    <div class="page-wrapper">
-        <!-- This parent container is required -->
-        <div class="sticky-alerts"></div>
-
-        <!-- Content wrapper containing the toggles -->
-        <div class="content-wrapper">
-            <button class="btn mt-10" type="button" onclick="toastAlert()">Toast alert!</button>
+<div class="container">
+    <div class="columns">
+        <div class="column">
+            <aside class="menu">
+                <p class="menu-label">
+                    General
+                </p>
+                <ul class="menu-list">
+                    <li><a>Dashboard</a></li>
+                    <li><a>Customers</a></li>
+                </ul>
+                <p class="menu-label">
+                    Administration
+                </p>
+                <ul class="menu-list">
+                    <li><a>Team Settings</a></li>
+                    <li>
+                        <a class="is-active">Manage Your Team</a>
+                        <ul>
+                            <li><a>Members</a></li>
+                            <li><a>Plugins</a></li>
+                            <li><a>Add a member</a></li>
+                        </ul>
+                    </li>
+                    <li><a>Invitations</a></li>
+                    <li><a>Cloud Storage Environment Settings</a></li>
+                    <li><a>Authentication</a></li>
+                </ul>
+                <p class="menu-label">
+                    Transactions
+                </p>
+                <ul class="menu-list">
+                    <li><a>Payments</a></li>
+                    <li><a>Transfers</a></li>
+                    <li><a>Balance</a></li>
+                </ul>
+            </aside>
+        </div>
+        <div class="column">
+            <nav class="panel">
+                <p class="panel-heading">
+                    Repositories
+                </p>
+                <div class="panel-block">
+                    <p class="control has-icons-left">
+                        <input class="input" type="text" placeholder="Search">
+                        <span class="icon is-left">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </span>
+                    </p>
+                </div>
+                <p class="panel-tabs">
+                    <a class="is-active">All</a>
+                    <a>Public</a>
+                    <a>Private</a>
+                    <a>Sources</a>
+                    <a>Forks</a>
+                </p>
+                <a class="panel-block is-active">
+                    <span class="panel-icon">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </span>
+                    bulma
+                </a>
+                <a class="panel-block">
+                    <span class="panel-icon">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </span>
+                    marksheet
+                </a>
+                <a class="panel-block">
+                    <span class="panel-icon">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </span>
+                    minireset.css
+                </a>
+                <a class="panel-block">
+                    <span class="panel-icon">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </span>
+                    jgthms.github.io
+                </a>
+                <a class="panel-block">
+                    <span class="panel-icon">
+                        <i class="fas fa-code-branch" aria-hidden="true"></i>
+                    </span>
+                    daniellowtw/infboard
+                </a>
+                <a class="panel-block">
+                    <span class="panel-icon">
+                        <i class="fas fa-code-branch" aria-hidden="true"></i>
+                    </span>
+                    mojs
+                </a>
+                <label class="panel-block">
+                    <input type="checkbox">
+                    remember me
+                </label>
+                <div class="panel-block">
+                    <button class="button is-link is-outlined is-fullwidth">
+                        Reset all filters
+                    </button>
+                </div>
+            </nav>
         </div>
     </div>
 </div>
-
-
 {% endblock %}

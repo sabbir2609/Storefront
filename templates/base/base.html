@@ -4,81 +4,53 @@
 <head>
     {% load static %}
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{% static 'favicon.ico' %}">
-    <title>
-        {% block title %}Sabbir Inc.{% endblock %}
-    </title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet" /> -->
-    <link rel='stylesheet' href="{% static 'css/halfmoon.min.css' %}" type='text/css'>
-    <link rel='stylesheet' href="{% static 'css/style.css' %}" type='text/css'>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Sabbir Inc.{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
-    <!-- Page wrapper with overlayed (only on small screens and down) sidebar -->
-    <div class="page-wrapper with-navbar with-sidebar with-navbar-fixed-bottom" data-sidebar-type="full-height">
-
-        <!-- Sidebar overlay -->
-        <div class="sidebar-overlay" onclick="halfmoon.toggleSidebar()"></div>
-
-        <!-- Navbar -->
-        <nav class="navbar">
-            {% include "base/navbar.html" %}
-        </nav>
-
-        <!-- Overlayed (only on small screens and down) sidebar -->
-        <div class="sidebar">
-            {% include "base/sidebar.html" %}
+    {% include "base/navbar.html" %}
+    <section class="hero is-danger is-medium">
+        <div class="hero-body">
+            <div class="">
+                <p class="title">
+                    Hi There!
+                </p>
+                <p class="subtitle">
+                    Welcome To Storefront
+                </p>
+            </div>
         </div>
+    </section>
+    <!-- Content here -->
+    {% block content %}
+    {% endblock %}
 
-        <!-- Content wrapper -->
-        <div class="content-wrapper">
-            {% block content %}
-            {% endblock %}
-        </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
 
-        <!-- Navbar fixed bottom -->
-        <nav class="navbar navbar-fixed-bottom">
-            {% include "base/footer.html" %}
-        </nav>
-    </div>
+            // Get all "navbar-burger" elements
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-    <!-- Requires halfmoon.js for toggling sidebar -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script> -->
-    <script src="{% static 'js/halfmoon.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+            // Add a click event on each of them
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
 
-    <!-- Toast alert -->
-    <!-- JavaScript -->
-    <script type="text/javascript">
-        // Toasts a default alert
-        function toastAlert() {
-            var alertContent = "This is a default alert with <a href='#' class='alert-link'>a link</a> being toasted.";
-            // Built-in function
-            halfmoon.initStickyAlert({
-                content: alertContent,      // Required, main content of the alert, type: string (can contain HTML)
-                title: "Default alert"      // Optional, title of the alert, default: "", type: string
-            })
-        }
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
 
-        // Toasts another alert (here, the options are shown)
-        function toastAnotherAlert() {
-            var alertContent = "This is another alert with <a href='#' class='alert-link'>a link</a> being toasted.";
-            // Built-in function
-            halfmoon.initStickyAlert({
-                content: alertContent,      // Required, main content of the alert, type: string (can contain HTML)
-                title: "Another alert",     // Optional, title of the alert, default: "", type: string
-                alertType: "",              // Optional, type of the alert, default: "", must be "alert-primary" || "alert-success" || "alert-secondary" || "alert-danger"
-                fillType: "",               // Optional, fill type of the alert, default: "", must be "filled-lm" || "filled-dm" || "filled"
-                hasDismissButton: true,     // Optional, the alert will contain the close button if true, default: true, type: boolean
-                timeShown: 5000             // Optional, time the alert stays on the screen (in ms), default: 5000, type: number
-            })
-        }
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+
+        });
     </script>
-
 </body>
 
 </html>

@@ -12,9 +12,11 @@ DATABASES = {
     'default': dj_database_url.config()
 }
 
+REDIS_PASSWORD = os.environ['REDIS_PASSWORD']
 REDIS_URL = os.environ['REDIS_URL']
 
-CELERY_BROKER_URL = REDIS_URL
+# redis://username:password@host:port/db
+CELERY_BROKER_URL = f'redis://default:{REDIS_PASSWORD}@{REDIS_URL}'
 
 CACHES = {
     "default": {
@@ -23,7 +25,7 @@ CACHES = {
         "LOCATION": f"redis://default@{REDIS_URL}",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "PASSWORD": os.environ['REDIS_PASSWORD'],
+            "PASSWORD": REDIS_PASSWORD,
         }
     }
 }

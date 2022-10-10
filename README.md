@@ -1,7 +1,7 @@
 # Storefront-1.1
 This is the step by step code from The Ultimate Django Course by Code With Mosh
 
-[Storefront](https://storefront2609.herokuapp.com/)
+Preview Demo : [Storefront](https://storefront2609.herokuapp.com/)
 
 ### Features :
 1. Category

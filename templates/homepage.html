@@ -1,113 +1,29 @@
 {% extends "base/base.html" %}
 
-{% block title %}Homepage{% endblock %}
+{% block title %}Storefront | Home{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="columns">
-        <div class="column">
-            <aside class="menu">
-                <p class="menu-label">
-                    General
-                </p>
-                <ul class="menu-list">
-                    <li><a>Dashboard</a></li>
-                    <li><a>Customers</a></li>
-                </ul>
-                <p class="menu-label">
-                    Administration
-                </p>
-                <ul class="menu-list">
-                    <li><a>Team Settings</a></li>
-                    <li>
-                        <a class="is-active">Manage Your Team</a>
-                        <ul>
-                            <li><a>Members</a></li>
-                            <li><a>Plugins</a></li>
-                            <li><a>Add a member</a></li>
-                        </ul>
-                    </li>
-                    <li><a>Invitations</a></li>
-                    <li><a>Cloud Storage Environment Settings</a></li>
-                    <li><a>Authentication</a></li>
-                </ul>
-                <p class="menu-label">
-                    Transactions
-                </p>
-                <ul class="menu-list">
-                    <li><a>Payments</a></li>
-                    <li><a>Transfers</a></li>
-                    <li><a>Balance</a></li>
-                </ul>
-            </aside>
-        </div>
-        <div class="column">
-            <nav class="panel">
-                <p class="panel-heading">
-                    Repositories
-                </p>
-                <div class="panel-block">
-                    <p class="control has-icons-left">
-                        <input class="input" type="text" placeholder="Search">
-                        <span class="icon is-left">
-                            <i class="fas fa-search" aria-hidden="true"></i>
-                        </span>
-                    </p>
-                </div>
-                <p class="panel-tabs">
-                    <a class="is-active">All</a>
-                    <a>Public</a>
-                    <a>Private</a>
-                    <a>Sources</a>
-                    <a>Forks</a>
-                </p>
-                <a class="panel-block is-active">
-                    <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                    </span>
-                    bulma
-                </a>
-                <a class="panel-block">
-                    <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                    </span>
-                    marksheet
-                </a>
-                <a class="panel-block">
-                    <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                    </span>
-                    minireset.css
-                </a>
-                <a class="panel-block">
-                    <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                    </span>
-                    jgthms.github.io
-                </a>
-                <a class="panel-block">
-                    <span class="panel-icon">
-                        <i class="fas fa-code-branch" aria-hidden="true"></i>
-                    </span>
-                    daniellowtw/infboard
-                </a>
-                <a class="panel-block">
-                    <span class="panel-icon">
-                        <i class="fas fa-code-branch" aria-hidden="true"></i>
-                    </span>
-                    mojs
-                </a>
-                <label class="panel-block">
-                    <input type="checkbox">
-                    remember me
-                </label>
-                <div class="panel-block">
-                    <button class="button is-link is-outlined is-fullwidth">
-                        Reset all filters
-                    </button>
-                </div>
-            </nav>
+<section class="hero is-danger is-fullheight">
+    <div class="hero-body">
+        <div class="">
+            <p class="title">
+                Storefront
+            </p>
+            <p class="subtitle">
+                A flexible and Scalable API for e-commerce
+            </p>
+            <p class="subtitle">
+                Check Documentation Down bellow
+            </p>
         </div>
     </div>
+</section>
+<div id="documentation">
+    <section class="section is-medium">
+        <h1 class="title">Documentation</h1>
+        <h2 class="subtitle">
+            Documentation <strong>sections</strong>, Coming soon.
+        </h2>
+    </section>
 </div>
 {% endblock %}

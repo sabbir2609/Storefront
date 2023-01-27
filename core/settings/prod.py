@@ -8,8 +8,8 @@ DEBUG = False
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-$&ovi=euv((gdjh1xbuck7ou3rzj1xa*xa%zn6sindeh70gmbp')
 
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else [] 
-CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 
 #ALLOWED_HOSTS = ['storefrontx.azurewebsites.net']
 
@@ -19,24 +19,19 @@ DATABASES = {
 }
 '''
 
-hostname = os.environ['DBHOST'] 
+hostname = os.environ['DBHOST'] 
   
 # Configure Postgres database; the full username for PostgreSQL flexible server is 
 # username (not @sever-name). 
 
-DATABASES = { 
-     'default': { 
-         'ENGINE': 'django.db.backends.postgresql', 
-         'NAME': os.environ['DBNAME'], 
-         'HOST': hostname + ".postgres.database.azure.com", 
-         'USER': os.environ['DBUSER'], 
-         'PASSWORD': os.environ['DBPASS']  
-     } 
-
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ['DBNAME'],
+        'HOST': hostname + ".postgres.database.azure.com",
+        'USER': os.environ['DBUSER'],
+        'PASSWORD': os.environ['DBPASS']
+    } 
 }
 
 REDIS_PASSWORD = os.environ['REDIS_PASSWORD']

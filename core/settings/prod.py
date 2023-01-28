@@ -18,8 +18,6 @@ DATABASES = {
     'default': dj_database_url.config()
 }
 '''
-
-hostname = os.environ['DBHOST'] 
   
 # Configure Postgres database; the full username for PostgreSQL flexible server is 
 # username (not @sever-name). 
@@ -27,11 +25,11 @@ hostname = os.environ['DBHOST']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['DBNAME'],
-        'HOST': hostname + ".postgres.database.azure.com",
+        'NAME': os.environ['AZURE_POSTGRESQL_NAME'],
+        'HOST': os.environ['AZURE_POSTGRESQL_HOST'],
         'PORT': '5432',
-        'USER': os.environ['DBUSER'],
-        'PASSWORD': os.environ['DBPASS']
+        'USER': os.environ['AZURE_POSTGRESQL_USER'],
+        'PASSWORD': os.environ['AZURE_POSTGRESQL_PASSWORD']
     } 
 }
 

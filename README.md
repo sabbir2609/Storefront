@@ -1,7 +1,7 @@
 # Storefront-1.1
-This is the step by step code from The Ultimate Django Course by Code With Mosh
+A flexible and scalable e-commerce headless app with Django RESTapi
 
-Preview Demo : [Storefront](https://storefront2609.herokuapp.com/)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://storefrontx.azurewebsites.net/)
 
 ### Features :
 1. Category
@@ -10,10 +10,10 @@ Preview Demo : [Storefront](https://storefront2609.herokuapp.com/)
 4. User , User Group
 5. Image Upload
 
-Authentication : JWT
-Parallel Tasking -> Celery
-Cache -> Redis
-Database -> PostgreSQL
+• Authentication : JWT  
+• Parallel Tasking -> Celery  
+• Cache -> Redis  
+• Database -> PostgreSQL  
 
 when you start : 
 ```
@@ -22,4 +22,15 @@ docker run -p 6379:6379 redis
 python manage.py runserver
 ```
 
-Docker File coming soon ! 
+Docker File coming soon !   
+   
+
+Technologies :   
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)  
+![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)  
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)  
+![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)  
+![DjangoREST](https://img.shields.io/badge/DJANGO-REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray)  
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)  
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)  
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)  

@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    settings_module = "core.settings.prod" if 'WEBSITE_HOSTNAME' in os.environ else 'core.settings.dev
+    settings_module = "core.settings.prod" if 'WEBSITE_HOSTNAME' in os.environ else 'core.settings.dev'
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
     try:

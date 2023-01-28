@@ -29,7 +29,7 @@ DATABASES = {
         'HOST': os.environ['DBHOST'],
         'PORT': '5432',
         'USER': os.environ['DBUSER'],
-        'PASSWORD': os.environ['DBPASSWORD']
+        'PASSWORD': os.environ['DBPASS']
     } 
 }
 

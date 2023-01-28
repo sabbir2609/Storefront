@@ -22,6 +22,8 @@ DATABASES = {
 # Configure Postgres database; the full username for PostgreSQL flexible server is 
 # username (not @sever-name). 
 
+hostname = os.environ['DBHOST']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -29,8 +31,7 @@ DATABASES = {
         'HOST': os.environ['DBHOST'],
         'PORT': '5432',
         'USER': os.environ['DBUSER'],
-        'PASSWORD': os.environ['DBPASS'],
-        "OPTIONS" : {"sslmode" : "require"}
+        'PASSWORD': os.environ['DBPASS']
     } 
 }
 

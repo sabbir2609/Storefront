@@ -25,11 +25,11 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['AZURE_POSTGRESQL_NAME'],
-        'HOST': os.environ['AZURE_POSTGRESQL_HOST'],
+        'NAME': os.environ['DBNAME'],
+        'HOST': os.environ['DBHOST'],
         'PORT': '5432',
-        'USER': os.environ['AZURE_POSTGRESQL_USER'],
-        'PASSWORD': os.environ['AZURE_POSTGRESQL_PASSWORD']
+        'USER': os.environ['DBUSER'],
+        'PASSWORD': os.environ['DBPASSWORD']
     } 
 }
 

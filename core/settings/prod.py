@@ -11,14 +11,6 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-$&ovi=euv((gdjh1xbuck7ou3r
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 
-#ALLOWED_HOSTS = ['storefrontx.azurewebsites.net']
-
-'''
-DATABASES = {
-    'default': dj_database_url.config()
-}
-'''
-  
 # Configure Postgres database; the full username for PostgreSQL flexible server is 
 # username (not @sever-name). 
 
@@ -28,11 +20,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ['DBNAME'],
-        'HOST': os.environ['DBHOST'],
         'PORT': '5432',
-        'USER': os.environ['DBUSER'],
-        'PASSWORD': os.environ['DBPASS']
-    } 
+        'HOST': hostname + ".postgres.database.azure.com",
+        'USER': os.environ['DBUSER'] + "@" + hostname,
+        'PASSWORD': os.environ['DBPASS'],
+        "OPTIONS" : {"sslmode" : "require"}
+    }
 }
 
 REDIS_URL = os.environ['REDIS_URL']

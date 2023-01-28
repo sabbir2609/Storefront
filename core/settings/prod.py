@@ -22,7 +22,7 @@ DATABASES = {
         'NAME': os.environ['DBNAME'],
         'PORT': '5432',
         'HOST': hostname + ".postgres.database.azure.com",
-        'USER': os.environ['DBUSER'] + "@" + hostname,
+        'USER': os.environ['DBUSER'],
         'PASSWORD': os.environ['DBPASS'],
         "OPTIONS" : {"sslmode" : "require"}
     }

@@ -34,17 +34,18 @@ DATABASES = {
     } 
 }
 
-REDIS_PASSWORD = os.environ['REDIS_PASSWORD']
 REDIS_URL = os.environ['REDIS_URL']
+REDIS_USER = os.environ['REDIS_USER']
+REDIS_PASSWORD = os.environ['REDIS_PASSWORD']
 
 # redis://username:password@host:port/db
-CELERY_BROKER_URL = f'redis://default:{REDIS_PASSWORD}@{REDIS_URL}'
+CELERY_BROKER_URL = f'redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_URL}'
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "TIMEOUT": 10 * 60,
-        "LOCATION": f"redis://default@{REDIS_URL}",
+        "LOCATION": f"redis://{REDIS_USER}@{REDIS_URL}",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             "PASSWORD": REDIS_PASSWORD,

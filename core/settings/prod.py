@@ -22,7 +22,7 @@ DATABASES = {
 # Configure Postgres database; the full username for PostgreSQL flexible server is 
 # username (not @sever-name). 
 
-hostname = os.envron['DBHOST']
+hostname = os.environ['DBHOST']
 
 DATABASES = {
     'default': {

@@ -53,9 +53,6 @@ MIDDLEWARE = [
 
 ]
 
-# if DEBUG:
-#     MIDDLEWARE += ['silk.middleware.SilkyMiddleware']  # silk middleware
-
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [

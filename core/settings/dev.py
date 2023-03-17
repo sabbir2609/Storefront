@@ -3,12 +3,15 @@ from .common import *
 DEBUG = True
 SECRET_KEY = 'django-insecure-$&ovi=euv((gdjh1xbuck7ou3rzj1xa*xa%zn6sindeh70gmbp'
 
+if DEBUG:
+    MIDDLEWARE += ['silk.middleware.SilkyMiddleware']  # silk middleware
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'storefront',
         'USER': 'postgres',
-        'PASSWORD': '9959',
+        'PASSWORD': '2609',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

@@ -7,5 +7,17 @@
         "store"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "db",
+            "database": "storefront",
+            "username": "postgres",
+            "password": "2609"
+        }
+    ]
 }

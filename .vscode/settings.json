@@ -19,5 +19,6 @@
             "username": "postgres",
             "password": "2609"
         }
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "basic"
 }

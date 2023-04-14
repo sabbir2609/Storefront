@@ -18,7 +18,7 @@ class Collection(models.Model):
     featured_product = models.ForeignKey(
         'Product', on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
 
-    def __str__(self) -> CharField:
+    def __str__(self):
         return self.title
 
     class Meta:
@@ -41,7 +41,7 @@ class Product(models.Model):
 
     promotions = models.ManyToManyField(Promotion, blank=True)
 
-    def __str__(self) -> CharField:
+    def __str__(self):
         return self.title
 
     class Meta:
@@ -117,6 +117,13 @@ class Order(models.Model):
             ('cancel_order', 'Can Cancel Order')
         ]
 
+    def __str__(self) -> str:
+        return f'Order {self.pk}'
+
+    @admin.display(ordering='placed_at')
+    def placed_at_date(self):
+        return self.placed_at.date()
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(
@@ -125,6 +132,9 @@ class OrderItem(models.Model):
         Product, on_delete=models.PROTECT, related_name='orderitems')
     quantity = models.PositiveSmallIntegerField()
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self) -> str:
+        return f'{self.product.title} x {self.quantity}'
 
 
 class Address(models.Model):

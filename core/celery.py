@@ -1,7 +1,9 @@
 import os
 from celery import Celery
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings.prod')
+# set the default Django settings module for the 'celery' program.
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings.dev')
+
 
 celery = Celery('storefront')
 celery.config_from_object('django.conf:settings', namespace='CELERY')

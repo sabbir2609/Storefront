@@ -13,6 +13,9 @@
 `python manage.py runserver`
 
 
+`celery -A core worker -l info`
+
+
 ## Databadse Instruction for WSL:
 
 [**WSL Database**](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-database)

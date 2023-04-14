@@ -1,8 +1,8 @@
-version: '3.9'
+version: '3.10'
 services:
   web:
     build: .
-    command: ./wait-for-it.sh postgresql:5432 -- ./docker-entrypoint.sh
+    command: ./wait-for-it.sh postgres:5432 -- ./docker-entrypoint.sh
     ports:
       - 8000:8000
     depends_on:
@@ -17,6 +17,7 @@ services:
       - 5432:5432
     restart: always
     environment:
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=2609
       - POSTGRES_DB=storefront
     volumes:

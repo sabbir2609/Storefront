@@ -1,11 +1,10 @@
-FROM python:3.9
+FROM python:3.10
 
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
-# Required to install mysqlclient with Pip
-RUN apt-get update \
-  && apt-get install python3-dev default-libmysqlclient-dev gcc -y
+# Required to install psqlclient with pipenv
+RUN apt-get update && apt-get install python3-dev libpq-dev -y
 
 # Install pipenv
 RUN pip install --upgrade pip 

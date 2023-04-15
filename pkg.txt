@@ -16,7 +16,6 @@ locust
 Pillow
 model-bakery
 gunicorn
-psycopg2
 psycopg2-binary
 redis
 pytest

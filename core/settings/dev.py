@@ -12,7 +12,7 @@ DATABASES = {
         'NAME': 'storefront',
         'USER': 'postgres',
         'PASSWORD': '2609',
-        'HOST': 'postgres',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 
@@ -23,13 +23,13 @@ DATABASES = {
     # }
 }
 
-CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_BROKER_URL = 'redis://localhost:6379'
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "TIMEOUT": 10 * 60,
-        "LOCATION": "redis://redis:6379/2",
+        "LOCATION": "redis://localhost:6379/2",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }

@@ -21,7 +21,8 @@ sudo service postgresql start
 docker run -p 6379:6379 redis
 python manage.py runserver
 ```
-  
+
+Update: I've successfully run this into Termux Android.
 
 Technologies :   
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)

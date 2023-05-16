@@ -6,11 +6,10 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 
 DEBUG = False
 
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 DEBUG = False
 
-# azure postgresql
 conn_str = os.environ["AZURE_POSTGRESQL_CONNECTIONSTRING"]
 conn_str_params = {
     pair.split("=")[0]: pair.split("=")[1] for pair in conn_str.split(" ")
@@ -45,7 +44,6 @@ CACHES = {
         "LOCATION": AZURE_REDIS_CONNECTIONSTRING,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            # "PASSWORD": REDIS_PASSWORD,
             "SSL": True,
         },
     }

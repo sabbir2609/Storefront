@@ -6,7 +6,7 @@ SECRET_KEY = "django-insecure-$&ovi=euv((gdjh1xbuck7ou3rzj1xa*xa%zn6sindeh70gmbp
 ALLOWED_HOSTS = ["*"]
 
 if DEBUG:
-    MIDDLEWARE += ["silk.middleware.SilkyMiddleware"]  # silk middleware
+    MIDDLEWARE += ["silk.middleware.SilkyMiddleware"]
 
 DATABASES = {
     "default": {
@@ -17,10 +17,6 @@ DATABASES = {
         "HOST": "localhost",
         "PORT": "5432",
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
 }
 
 CELERY_BROKER_URL = "redis://localhost:6379"

@@ -4,10 +4,9 @@ from .common import *
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-DEBUG = False
-
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+
 DEBUG = False
 
 conn_str = os.environ["AZURE_POSTGRESQL_CONNECTIONSTRING"]

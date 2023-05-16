@@ -10,7 +10,7 @@ A flexible and scalable e-commerce headless app with Django RESTapi
 4. User , User Group
 5. Image Upload
 
-• Authentication : JWT  
+• Authentication : JWT  [See setupguide.md](./resources/setupguide.md)  
 • Parallel Tasking -> Celery  
 • Cache -> Redis  
 • Database -> PostgreSQL  

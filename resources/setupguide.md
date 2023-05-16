@@ -57,4 +57,21 @@ Close and reopen your terminal.
 
 Check to see if redis is working (redis-cli is the command line interface utility to talk with Redis): `redis-cli ping` this should return a reply of "PONG".
 
-To stop running your Redis server: sudo service redis-server stop
+To stop running your Redis server: `sudo service redis-server stop`
+
+
+## Create user endpoints 
+`http://127.0.0.1:8000/auth/users/`
+
+## Create USER ( get JWT Token)
+
+`http://127.0.0.1:8000/auth/jwt/create`
+
+provide the creaentials and get the access token
+the use ModHeader chrome extention 
+On ModHeader set header to `Authorization` and value to `JWT <token>`. Example: `Authorization, JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg0Mjk0MjY2LCJpYXQiOjE2ODQyMDc4NjYsImp0aSI6Ijg3ZDRmOTJjNzM4YzQ4MmU5Y2I4Njc0NTI1YjJhNDVmIiwidXNlcl9pZCI6MX0.P67F-1xaJOF1nDAwZOUFI16MLY5vgDdF3isJFvS95ts`
+
+
+## Get Profile Data 
+`http://127.0.0.1:8000/auth/users/me/`
+

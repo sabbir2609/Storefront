@@ -37,7 +37,7 @@ djangorestframework-simplejwt==4.8.0
 djoser==2.1.0
 docopt==0.6.2
 drf-nested-routers==0.93.4
-Flask==2.2.2
+Flask==2.2.5
 Flask-BasicAuth==0.2.0
 Flask-Cors==3.0.10
 flower==1.2.0

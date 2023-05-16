@@ -1,5 +1,9 @@
 {
     "cSpell.words": [
+        "DBHOST",
+        "DBPASS",
+        "DBUSER",
+        "djoser",
         "viewsets"
     ],
     "python.formatting.provider": "none",

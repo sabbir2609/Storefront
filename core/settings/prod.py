@@ -1,6 +1,7 @@
 import os
 
 from .common import *
+from .common import BASE_DIR
 
 # import dj_database_url
 
@@ -20,20 +21,20 @@ CSRF_TRUSTED_ORIGINS = (
 DEBUG = False
 
 
-# Configure Postgres database; the full username for PostgreSQL flexible server is
-# username (not @sever-name).
-
-hostname = os.environ["DBHOST"]
-
+# Configure Postgres database based on connection string of the libpq Keyword/Value form
+# https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING
+conn_str = os.environ["AZURE_POSTGRESQL_CONNECTIONSTRING"]
+conn_str_params = {
+    pair.split("=")[0]: pair.split("=")[1] for pair in conn_str.split(" ")
+}
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ["DBNAME"],
-        "PORT": "5432",
-        "HOST": hostname + ".postgres.database.azure.com",
-        "USER": os.environ["DBUSER"],
-        "PASSWORD": os.environ["DBPASS"],
-        "OPTIONS": {"sslmode": "require"},
+        "NAME": conn_str_params["dbname"],
+        "HOST": conn_str_params["host"],
+        "USER": conn_str_params["user"],
+        "PASSWORD": conn_str_params["password"],
+        # "OPTIONS": {"sslmode": "require"},
     }
 }
 

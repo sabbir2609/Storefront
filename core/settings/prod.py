@@ -19,19 +19,6 @@ CSRF_TRUSTED_ORIGINS = (
 
 DEBUG = False
 
-# security.W004: This warning suggests that you should set the SECURE_HSTS_SECONDS setting to enable HTTP Strict Transport Security (HSTS) on your site. HSTS is a security feature that forces web browsers to always use HTTPS when communicating with your site, which can help protect against certain types of attacks.
-SECURE_HSTS_SECONDS = 31536000  # 1 year
-
-# security.W008: This warning suggests that you should set the SECURE_SSL_REDIRECT setting to True if your site should only be accessed over HTTPS. This setting will redirect any non-HTTPS requests to HTTPS, which can help prevent attackers from intercepting sensitive information.
-SECURE_SSL_REDIRECT = True
-
-
-# security.W012: This warning suggests that you should set the SESSION_COOKIE_SECURE setting to True to ensure that session cookies are only sent over HTTPS connections. This can help prevent attackers from hijacking user sessions.
-SESSION_COOKIE_SECURE = True
-
-# security.W019: This warning suggests that you should set the X_FRAME_OPTIONS setting to 'DENY' to prevent your site from being embedded in a frame or iframe on another site. This can help prevent clickjacking attacks.
-X_FRAME_OPTIONS = "DENY"
-
 
 # Configure Postgres database; the full username for PostgreSQL flexible server is
 # username (not @sever-name).

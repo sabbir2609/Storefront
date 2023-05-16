@@ -3,6 +3,8 @@ from .common import *
 DEBUG = True
 SECRET_KEY = "django-insecure-$&ovi=euv((gdjh1xbuck7ou3rzj1xa*xa%zn6sindeh70gmbp"
 
+ALLOWED_HOSTS = ["*"]
+
 if DEBUG:
     MIDDLEWARE += ["silk.middleware.SilkyMiddleware"]  # silk middleware
 

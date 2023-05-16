@@ -5,6 +5,12 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
+# Configure the domain name using the environment variable
+# that Azure automatically creates for us.
+ALLOWED_HOSTS = [os.environ["WEBSITE_HOSTNAME"]] if "WEBSITE_HOSTNAME" in os.environ else []
+
+CSRF_TRUSTED_ORIGINS = ["https://" + os.environ["WEBSITE_HOSTNAME"]] if "WEBSITE_HOSTNAME" in os.environ else []
+
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 INSTALLED_APPS = [
@@ -16,12 +22,14 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Third party apps
     "rest_framework",
     "djoser",
     "debug_toolbar",
     "django_filters",
     "corsheaders",
     "silk",
+    # My apps
     "store",
     "tags",
     "likes",

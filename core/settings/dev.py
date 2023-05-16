@@ -1,7 +1,6 @@
 from .common import *
 
 DEBUG = True
-ALLOWED_HOSTS = []
 SECRET_KEY = "django-insecure-$&ovi=euv((gdjh1xbuck7ou3rzj1xa*xa%zn6sindeh70gmbp"
 
 if DEBUG:

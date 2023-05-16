@@ -34,12 +34,12 @@ DATABASES = {
         "HOST": conn_str_params["host"],
         "USER": conn_str_params["user"],
         "PASSWORD": conn_str_params["password"],
-        "OPTIONS": {"sslmode": "require"},
+        "OPTIONS": {"sslmode": conn_str_params["sslmode"]},
     }
 }
 
 # azure redis cache provides direct access to redis inside the azure network
-AZURE_REDIS_CONNECTIONSTRING = os.environ["REDIS_URL"]
+AZURE_REDIS_CONNECTIONSTRING = os.environ["AZURE_REDIS_CONNECTIONSTRING"]
 
 # REDIS_USER = os.environ["REDIS_USER"]
 # REDIS_PASSWORD = os.environ["REDIS_PASSWORD"]
@@ -48,7 +48,7 @@ AZURE_REDIS_CONNECTIONSTRING = os.environ["REDIS_URL"]
 # CELERY_BROKER_URL = f"redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_URL}"
 
 # azure integrated cache
-CELERY_BROKER_URL = AZURE_REDIS_CONNECTIONSTRING
+CELERY_BROKER_URL = os.environ["AZURE_REDIS_CONNECTIONSTRING"]
 
 CACHES = {
     "default": {

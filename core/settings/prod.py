@@ -39,7 +39,7 @@ DATABASES = {
 }
 
 # azure redis cache provides direct access to redis inside the azure network
-REDIS_URL = os.environ["REDIS_URL"]
+AZURE_REDIS_CONNECTIONSTRING = os.environ["REDIS_URL"]
 
 # REDIS_USER = os.environ["REDIS_USER"]
 # REDIS_PASSWORD = os.environ["REDIS_PASSWORD"]
@@ -48,18 +48,18 @@ REDIS_URL = os.environ["REDIS_URL"]
 # CELERY_BROKER_URL = f"redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_URL}"
 
 # azure integrated cache
-CELERY_BROKER_URL = REDIS_URL
+CELERY_BROKER_URL = AZURE_REDIS_CONNECTIONSTRING
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "TIMEOUT": 10 * 60,
-        "LOCATION": REDIS_URL,
-        # probably not needed
-        # "OPTIONS": {
-        #     "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        #     "PASSWORD": REDIS_PASSWORD,
-        # },
+        "LOCATION": AZURE_REDIS_CONNECTIONSTRING,
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            # "PASSWORD": REDIS_PASSWORD,
+            "SSL": True,
+        },
     }
 }
 

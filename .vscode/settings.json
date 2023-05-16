@@ -2,7 +2,7 @@
     "cSpell.words": [
         "viewsets"
     ],
-    "python.formatting.provider": "autopep8",
+    "python.formatting.provider": "none",
     "python.testing.pytestArgs": [
         "store"
     ],
@@ -20,5 +20,8 @@
             "password": "2609"
         }
     ],
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "basic",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    }
 }

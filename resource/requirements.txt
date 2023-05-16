@@ -57,7 +57,7 @@ locust==2.12.0
 MarkupSafe==2.1.1
 model-bakery==1.7.0
 msgpack==1.0.4
-oauthlib==3.2.1
+oauthlib==3.2.2
 packaging==21.3
 Pillow==9.2.0
 pluggy==1.0.0

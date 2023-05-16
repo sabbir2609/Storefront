@@ -6,7 +6,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 
 # ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 
-ALLOWED_HOSTS = ['169.254.130.2:8000']
+ALLOWED_HOSTS = ["169.254.130.2"]
 
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 

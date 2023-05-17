@@ -1,1 +1,0 @@
-pipenv install Django django-admin-interface django-cors-headers django-debug-toolbar django-filter django-templated-mail djangorestframework djoser drf-nested-routers redis whitenoise celery psycopg2 flower

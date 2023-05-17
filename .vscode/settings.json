@@ -27,5 +27,7 @@
     "python.analysis.typeCheckingMode": "off",
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
-    }
+    },
+    "appService.defaultWebAppToDeploy": "/subscriptions/fb7622a5-96d6-4e93-8227-66aae77bdcc3/resourceGroups/xness/providers/Microsoft.Web/sites/xness",
+    "appService.deploySubpath": "."
 }

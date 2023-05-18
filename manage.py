@@ -7,8 +7,8 @@ def main():
         print("Loading environment variables for .env file")
         load_dotenv('./.env')
 
-    settings_module = 'core.settings.prod' if 'WEBSITE_HOSTNAME' in os.environ else 'core.settings.dev'
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
+    # settings_module = 'core.settings.prod' if 'WEBSITE_HOSTNAME' in os.environ else 'core.settings.dev'
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', "core.settings")
 
     try:
         from django.core.management import execute_from_command_line

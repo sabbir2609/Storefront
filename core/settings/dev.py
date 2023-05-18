@@ -1,34 +1,23 @@
 from .common import *
 
+SECRET_KEY = os.environ.get("SECRET_KEY")
+
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 if DEBUG:
     MIDDLEWARE += ["silk.middleware.SilkyMiddleware"]
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "storefront",
-#         "USER": "postgres",
-#         "PASSWORD": "2609",
-#         "HOST": "localhost",
-#         "PORT": "5432",
-#     }
-# }
-
+# Configure Postgres database for local development
+#   Set these environment variables in the .env file for this project.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ["AZURE_POSTGRESQL_NAME"],
-        'USER': os.environ["AZURE_POSTGRESQL_USER"],
-        'PASSWORD': os.environ["AZURE_POSTGRESQL_PASSWORD"],
-        'HOST': os.environ["AZURE_POSTGRESQL_HOST"],
-        'PORT': 5432 ,
-        'OPTIONS': {
-            'sslmode': 'require',
-        }
+        'NAME': os.environ.get('DBNAME'),
+        'HOST': os.environ.get('DBHOST'),
+        'USER': os.environ.get('DBUSER'),
+        'PASSWORD': os.environ.get('DBPASS'),
     }
 }
 

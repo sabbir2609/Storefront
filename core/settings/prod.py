@@ -1,6 +1,7 @@
 import os
 
 from .common import *
+from .common import BASE_DIR
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
@@ -10,20 +11,21 @@ CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE
 
 DEBUG = False
 
+# Database settings
+conn_str = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
+conn_str_params = {pair.split('=')[0]: pair.split('=')[1] for pair in conn_str.split(' ')}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ["AZURE_POSTGRESQL_NAME"],
-        'USER': os.environ["AZURE_POSTGRESQL_USER"],
-        'PASSWORD': os.environ["AZURE_POSTGRESQL_PASSWORD"],
-        'HOST': os.environ["AZURE_POSTGRESQL_HOST"],
-        'PORT': 5432 ,
-        'OPTIONS': {
-            'sslmode': 'require',
-        }
+        'NAME': conn_str_params['dbname'],
+        'HOST': conn_str_params['host'],
+        'USER': conn_str_params['user'],
+        'PASSWORD': conn_str_params['password'],
     }
 }
 
+
+# cache settings
 REDIS_PASSWORD = os.environ['REDIS_PASSWORD']
 REDIS_URL = os.environ['REDIS_URL']
 
@@ -42,6 +44,7 @@ CACHES = {
     }
 }
 
+# email settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = os.environ["SMTP_SERVER"]
 EMAIL_HOST_USER = os.environ["SMTP_LOGIN"]

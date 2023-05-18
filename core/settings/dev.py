@@ -1,21 +1,34 @@
 from .common import *
 
 DEBUG = True
-SECRET_KEY = "django-insecure-$&ovi=euv((gdjh1xbuck7ou3rzj1xa*xa%zn6sindeh70gmbp"
 
 ALLOWED_HOSTS = ["*"]
 
 if DEBUG:
     MIDDLEWARE += ["silk.middleware.SilkyMiddleware"]
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "storefront",
+#         "USER": "postgres",
+#         "PASSWORD": "2609",
+#         "HOST": "localhost",
+#         "PORT": "5432",
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "storefront",
-        "USER": "postgres",
-        "PASSWORD": "2609",
-        "HOST": "localhost",
-        "PORT": "5432",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ["AZURE_POSTGRESQL_NAME"],
+        'USER': os.environ["AZURE_POSTGRESQL_USER"],
+        'PASSWORD': os.environ["AZURE_POSTGRESQL_PASSWORD"],
+        'HOST': os.environ["AZURE_POSTGRESQL_HOST"],
+        'PORT': 5432 ,
+        'OPTIONS': {
+            'sslmode': 'require',
+        }
     }
 }
 

@@ -1,12 +1,13 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+from dotenv import load_dotenv
 
 def main():
-    """Run administrative tasks."""
-    settings_module = "core.settings.prod" if 'WEBSITE_HOSTNAME' in os.environ else 'core.settings.dev'
+    if 'WEBSITE_HOSTNAME' not in os.environ:
+        print("Loading environment variables for .env file")
+        load_dotenv('./.env')
+
+    settings_module = 'core.settings.prod' if 'WEBSITE_HOSTNAME' in os.environ else 'core.settings.dev'
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
     try:

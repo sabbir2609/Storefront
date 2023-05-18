@@ -14,6 +14,7 @@ conn_str = os.environ["AZURE_POSTGRESQL_CONNECTIONSTRING"]
 conn_str_params = {
     pair.split("=")[0]: pair.split("=")[1] for pair in conn_str.split(" ")
 }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -25,27 +26,21 @@ DATABASES = {
     }
 }
 
-# azure redis cache provides direct access to redis inside the azure network
-AZURE_REDIS_CONNECTIONSTRING = os.environ["AZURE_REDIS_CONNECTIONSTRING"]
-
-# REDIS_USER = os.environ["REDIS_USER"]
-# REDIS_PASSWORD = os.environ["REDIS_PASSWORD"]
+REDIS_PASSWORD = os.environ['REDIS_PASSWORD']
+REDIS_URL = os.environ['REDIS_URL']
 
 # redis://username:password@host:port/db
-# CELERY_BROKER_URL = f"redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_URL}"
-
-# azure integrated cache
-CELERY_BROKER_URL = os.environ["AZURE_REDIS_CONNECTIONSTRING"]
+CELERY_BROKER_URL = f'redis://default:{REDIS_PASSWORD}@{REDIS_URL}'
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "TIMEOUT": 10 * 60,
-        "LOCATION": AZURE_REDIS_CONNECTIONSTRING,
+        "LOCATION": f"redis://default@{REDIS_URL}",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "SSL": True,
-        },
+            "PASSWORD": REDIS_PASSWORD,
+        }
     }
 }
 

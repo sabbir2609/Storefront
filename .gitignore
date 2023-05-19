@@ -6,3 +6,5 @@ venv
 *.png
 *.jpeg
 *.gif
+
+.vscode

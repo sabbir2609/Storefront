@@ -8,3 +8,5 @@ venv
 *.gif
 
 .vscode
+
+pytest.ini

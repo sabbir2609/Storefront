@@ -3,7 +3,8 @@ from datetime import timedelta
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-print(BASE_DIR)
+
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
@@ -102,6 +103,7 @@ USE_TZ = True
 
 STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
 STATIC_URL = 'static/'
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"

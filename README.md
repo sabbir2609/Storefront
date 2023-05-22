@@ -1,7 +1,7 @@
 # Storefront-1.1
 A flexible and scalable e-commerce headless app with Django RESTapi
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://storefrontx.azurewebsites.net/)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://sabbirstore.azurewebsites.net)
 
 ### Features :
 1. Category

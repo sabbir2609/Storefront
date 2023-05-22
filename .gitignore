@@ -9,4 +9,6 @@ venv
 
 .vscode
 
+staticfiles
+
 pytest.ini

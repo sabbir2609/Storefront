@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 def main():
     """Run administrative tasks."""
     # If WEBSITE_HOSTNAME is defined as an environment variable, then we're running on Azure App Service
+    print('Inside manage.py')
+    print('WEBSITE_HOSTNAME' in os.environ)
 
     # Only for Local Development - Load environment variables from the .env file
     if 'WEBSITE_HOSTNAME' not in os.environ:

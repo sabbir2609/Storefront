@@ -1,5 +1,7 @@
 from .common import *
 
+print('Inside dev.py settings')
+
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = True

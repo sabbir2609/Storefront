@@ -3,6 +3,8 @@ import os
 from .common import *
 from .common import BASE_DIR
 
+print('Inside prod.py settings')
+
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []

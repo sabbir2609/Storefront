@@ -1,0 +1,20 @@
+TODO When you start
+
+sudo service postgresql start
+python manage.py runserver
+docker run -p 6379:6379 redis
+celery -A core worker --loglevel=info
+celery -A core beat
+celery -A core flower
+ptw <- for continuos test
+
+locust -f locustfiles/browse_products.py
+
+python manage.py seed_db
+
+TODO Heroku
+git push heroku main
+heroku config
+
+
+pipenv run pip freeze > requirements.txt

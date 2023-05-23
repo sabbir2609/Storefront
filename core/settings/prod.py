@@ -11,7 +11,7 @@ ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.env
 
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 
-DEBUG = [os.environ['DEBUG']] if 'DEBUG' in os.environ else False
+DEBUG = os.environ['DEBUG']
 
 # Database settings
 conn_str = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']

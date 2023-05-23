@@ -99,6 +99,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+# TODO: configure the static files storage with blob storage
 
 STATIC_URL = '/static/'
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
